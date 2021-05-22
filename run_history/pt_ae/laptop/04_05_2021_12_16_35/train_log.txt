@@ -1,0 +1,477 @@
+04/05/2021 12:16:35 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 12:16:35 - INFO - __main__ -   ***** Running training *****
+04/05/2021 12:16:35 - INFO - __main__ -     Num examples = 2895
+04/05/2021 12:16:35 - INFO - __main__ -     Batch size = 4
+04/05/2021 12:16:35 - INFO - __main__ -     Num steps = 2892
+04/05/2021 12:16:35 - INFO - __main__ -   ***** Running validations *****
+04/05/2021 12:16:35 - INFO - __main__ -     Num orig examples = 150
+04/05/2021 12:16:35 - INFO - __main__ -     Num split examples = 150
+04/05/2021 12:16:35 - INFO - __main__ -     Batch size = 4
+04/05/2021 12:16:35 - INFO - modeling -   loading archive file pt_model/laptop_pt/
+04/05/2021 12:16:35 - INFO - modeling -   Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 512,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "type_vocab_size": 2,
+  "vocab_size": 30522
+}
+
+04/05/2021 12:16:37 - INFO - modeling -   Weights of BertForABSA not initialized from pretrained model: ['groie.pre_layers.0.attention.self.query.weight', 'groie.pre_layers.0.attention.self.query.bias', 'groie.pre_layers.0.attention.self.key.weight', 'groie.pre_layers.0.attention.self.key.bias', 'groie.pre_layers.0.attention.self.value.weight', 'groie.pre_layers.0.attention.self.value.bias', 'groie.pre_layers.0.attention.output.dense.weight', 'groie.pre_layers.0.attention.output.dense.bias', 'groie.pre_layers.0.attention.output.LayerNorm.weight', 'groie.pre_layers.0.attention.output.LayerNorm.bias', 'groie.pre_layers.0.intermediate.dense.weight', 'groie.pre_layers.0.intermediate.dense.bias', 'groie.pre_layers.0.output.dense.weight', 'groie.pre_layers.0.output.dense.bias', 'groie.pre_layers.0.output.LayerNorm.weight', 'groie.pre_layers.0.output.LayerNorm.bias', 'groie.pre_layers.1.attention.self.query.weight', 'groie.pre_layers.1.attention.self.query.bias', 'groie.pre_layers.1.attention.self.key.weight', 'groie.pre_layers.1.attention.self.key.bias', 'groie.pre_layers.1.attention.self.value.weight', 'groie.pre_layers.1.attention.self.value.bias', 'groie.pre_layers.1.attention.output.dense.weight', 'groie.pre_layers.1.attention.output.dense.bias', 'groie.pre_layers.1.attention.output.LayerNorm.weight', 'groie.pre_layers.1.attention.output.LayerNorm.bias', 'groie.pre_layers.1.intermediate.dense.weight', 'groie.pre_layers.1.intermediate.dense.bias', 'groie.pre_layers.1.output.dense.weight', 'groie.pre_layers.1.output.dense.bias', 'groie.pre_layers.1.output.LayerNorm.weight', 'groie.pre_layers.1.output.LayerNorm.bias', 'groie.pre_layers.2.attention.self.query.weight', 'groie.pre_layers.2.attention.self.query.bias', 'groie.pre_layers.2.attention.self.key.weight', 'groie.pre_layers.2.attention.self.key.bias', 'groie.pre_layers.2.attention.self.value.weight', 'groie.pre_layers.2.attention.self.value.bias', 'groie.pre_layers.2.attention.output.dense.weight', 'groie.pre_layers.2.attention.output.dense.bias', 'groie.pre_layers.2.attention.output.LayerNorm.weight', 'groie.pre_layers.2.attention.output.LayerNorm.bias', 'groie.pre_layers.2.intermediate.dense.weight', 'groie.pre_layers.2.intermediate.dense.bias', 'groie.pre_layers.2.output.dense.weight', 'groie.pre_layers.2.output.dense.bias', 'groie.pre_layers.2.output.LayerNorm.weight', 'groie.pre_layers.2.output.LayerNorm.bias', 'groie.pre_layers.3.attention.self.query.weight', 'groie.pre_layers.3.attention.self.query.bias', 'groie.pre_layers.3.attention.self.key.weight', 'groie.pre_layers.3.attention.self.key.bias', 'groie.pre_layers.3.attention.self.value.weight', 'groie.pre_layers.3.attention.self.value.bias', 'groie.pre_layers.3.attention.output.dense.weight', 'groie.pre_layers.3.attention.output.dense.bias', 'groie.pre_layers.3.attention.output.LayerNorm.weight', 'groie.pre_layers.3.attention.output.LayerNorm.bias', 'groie.pre_layers.3.intermediate.dense.weight', 'groie.pre_layers.3.intermediate.dense.bias', 'groie.pre_layers.3.output.dense.weight', 'groie.pre_layers.3.output.dense.bias', 'groie.pre_layers.3.output.LayerNorm.weight', 'groie.pre_layers.3.output.LayerNorm.bias', 'groie.crf_layers.0.start_transitions', 'groie.crf_layers.0.end_transitions', 'groie.crf_layers.0.transitions', 'groie.crf_layers.1.start_transitions', 'groie.crf_layers.1.end_transitions', 'groie.crf_layers.1.transitions', 'groie.crf_layers.2.start_transitions', 'groie.crf_layers.2.end_transitions', 'groie.crf_layers.2.transitions', 'groie.crf_layers.3.start_transitions', 'groie.crf_layers.3.end_transitions', 'groie.crf_layers.3.transitions', 'groie.classifier.weight', 'groie.classifier.bias']
+04/05/2021 12:16:37 - INFO - modeling -   Weights from pretrained model not used in BertForABSA: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'qa_outputs.weight', 'qa_outputs.bias']
+04/05/2021 12:24:53 - INFO - __main__ -   validation loss: 36.912076, epoch: 1
+04/05/2021 12:24:54 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 12:24:54 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 12:24:54 - INFO - __main__ -     Num examples = 150
+04/05/2021 12:24:54 - INFO - __main__ -     Batch size = 8
+04/05/2021 12:32:52 - INFO - __main__ -   validation loss: 34.880689, epoch: 2
+04/05/2021 12:32:53 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 12:32:53 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 12:32:53 - INFO - __main__ -     Num examples = 150
+04/05/2021 12:32:53 - INFO - __main__ -     Batch size = 8
+04/05/2021 12:40:50 - INFO - __main__ -   validation loss: 48.156874, epoch: 3
+04/05/2021 12:40:51 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 12:40:51 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 12:40:51 - INFO - __main__ -     Num examples = 150
+04/05/2021 12:40:51 - INFO - __main__ -     Batch size = 8
+04/05/2021 12:48:40 - WARNING - optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+04/05/2021 12:48:41 - WARNING - optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+04/05/2021 12:48:41 - WARNING - optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+04/05/2021 12:48:48 - INFO - __main__ -   validation loss: 49.088739, epoch: 4
+04/05/2021 12:48:49 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 12:48:49 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 12:48:49 - INFO - __main__ -     Num examples = 150
+04/05/2021 12:48:49 - INFO - __main__ -     Batch size = 8
+04/05/2021 12:48:52 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 12:48:52 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 12:48:52 - INFO - __main__ -     Num examples = 800
+04/05/2021 12:48:52 - INFO - __main__ -     Batch size = 8
+04/05/2021 12:49:06 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 12:49:06 - INFO - __main__ -   ***** Running training *****
+04/05/2021 12:49:06 - INFO - __main__ -     Num examples = 2895
+04/05/2021 12:49:06 - INFO - __main__ -     Batch size = 4
+04/05/2021 12:49:06 - INFO - __main__ -     Num steps = 2892
+04/05/2021 12:49:06 - INFO - __main__ -   ***** Running validations *****
+04/05/2021 12:49:06 - INFO - __main__ -     Num orig examples = 150
+04/05/2021 12:49:06 - INFO - __main__ -     Num split examples = 150
+04/05/2021 12:49:06 - INFO - __main__ -     Batch size = 4
+04/05/2021 12:49:06 - INFO - modeling -   loading archive file pt_model/laptop_pt/
+04/05/2021 12:49:06 - INFO - modeling -   Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 512,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "type_vocab_size": 2,
+  "vocab_size": 30522
+}
+
+04/05/2021 12:49:08 - INFO - modeling -   Weights of BertForABSA not initialized from pretrained model: ['groie.pre_layers.0.attention.self.query.weight', 'groie.pre_layers.0.attention.self.query.bias', 'groie.pre_layers.0.attention.self.key.weight', 'groie.pre_layers.0.attention.self.key.bias', 'groie.pre_layers.0.attention.self.value.weight', 'groie.pre_layers.0.attention.self.value.bias', 'groie.pre_layers.0.attention.output.dense.weight', 'groie.pre_layers.0.attention.output.dense.bias', 'groie.pre_layers.0.attention.output.LayerNorm.weight', 'groie.pre_layers.0.attention.output.LayerNorm.bias', 'groie.pre_layers.0.intermediate.dense.weight', 'groie.pre_layers.0.intermediate.dense.bias', 'groie.pre_layers.0.output.dense.weight', 'groie.pre_layers.0.output.dense.bias', 'groie.pre_layers.0.output.LayerNorm.weight', 'groie.pre_layers.0.output.LayerNorm.bias', 'groie.pre_layers.1.attention.self.query.weight', 'groie.pre_layers.1.attention.self.query.bias', 'groie.pre_layers.1.attention.self.key.weight', 'groie.pre_layers.1.attention.self.key.bias', 'groie.pre_layers.1.attention.self.value.weight', 'groie.pre_layers.1.attention.self.value.bias', 'groie.pre_layers.1.attention.output.dense.weight', 'groie.pre_layers.1.attention.output.dense.bias', 'groie.pre_layers.1.attention.output.LayerNorm.weight', 'groie.pre_layers.1.attention.output.LayerNorm.bias', 'groie.pre_layers.1.intermediate.dense.weight', 'groie.pre_layers.1.intermediate.dense.bias', 'groie.pre_layers.1.output.dense.weight', 'groie.pre_layers.1.output.dense.bias', 'groie.pre_layers.1.output.LayerNorm.weight', 'groie.pre_layers.1.output.LayerNorm.bias', 'groie.pre_layers.2.attention.self.query.weight', 'groie.pre_layers.2.attention.self.query.bias', 'groie.pre_layers.2.attention.self.key.weight', 'groie.pre_layers.2.attention.self.key.bias', 'groie.pre_layers.2.attention.self.value.weight', 'groie.pre_layers.2.attention.self.value.bias', 'groie.pre_layers.2.attention.output.dense.weight', 'groie.pre_layers.2.attention.output.dense.bias', 'groie.pre_layers.2.attention.output.LayerNorm.weight', 'groie.pre_layers.2.attention.output.LayerNorm.bias', 'groie.pre_layers.2.intermediate.dense.weight', 'groie.pre_layers.2.intermediate.dense.bias', 'groie.pre_layers.2.output.dense.weight', 'groie.pre_layers.2.output.dense.bias', 'groie.pre_layers.2.output.LayerNorm.weight', 'groie.pre_layers.2.output.LayerNorm.bias', 'groie.pre_layers.3.attention.self.query.weight', 'groie.pre_layers.3.attention.self.query.bias', 'groie.pre_layers.3.attention.self.key.weight', 'groie.pre_layers.3.attention.self.key.bias', 'groie.pre_layers.3.attention.self.value.weight', 'groie.pre_layers.3.attention.self.value.bias', 'groie.pre_layers.3.attention.output.dense.weight', 'groie.pre_layers.3.attention.output.dense.bias', 'groie.pre_layers.3.attention.output.LayerNorm.weight', 'groie.pre_layers.3.attention.output.LayerNorm.bias', 'groie.pre_layers.3.intermediate.dense.weight', 'groie.pre_layers.3.intermediate.dense.bias', 'groie.pre_layers.3.output.dense.weight', 'groie.pre_layers.3.output.dense.bias', 'groie.pre_layers.3.output.LayerNorm.weight', 'groie.pre_layers.3.output.LayerNorm.bias', 'groie.crf_layers.0.start_transitions', 'groie.crf_layers.0.end_transitions', 'groie.crf_layers.0.transitions', 'groie.crf_layers.1.start_transitions', 'groie.crf_layers.1.end_transitions', 'groie.crf_layers.1.transitions', 'groie.crf_layers.2.start_transitions', 'groie.crf_layers.2.end_transitions', 'groie.crf_layers.2.transitions', 'groie.crf_layers.3.start_transitions', 'groie.crf_layers.3.end_transitions', 'groie.crf_layers.3.transitions', 'groie.classifier.weight', 'groie.classifier.bias']
+04/05/2021 12:49:08 - INFO - modeling -   Weights from pretrained model not used in BertForABSA: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'qa_outputs.weight', 'qa_outputs.bias']
+04/05/2021 12:57:06 - INFO - __main__ -   validation loss: 33.648062, epoch: 1
+04/05/2021 12:57:07 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 12:57:07 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 12:57:07 - INFO - __main__ -     Num examples = 150
+04/05/2021 12:57:07 - INFO - __main__ -     Batch size = 8
+04/05/2021 13:05:06 - INFO - __main__ -   validation loss: 44.970050, epoch: 2
+04/05/2021 13:05:08 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 13:05:08 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 13:05:08 - INFO - __main__ -     Num examples = 150
+04/05/2021 13:05:08 - INFO - __main__ -     Batch size = 8
+04/05/2021 13:13:05 - INFO - __main__ -   validation loss: 44.851569, epoch: 3
+04/05/2021 13:13:06 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 13:13:06 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 13:13:06 - INFO - __main__ -     Num examples = 150
+04/05/2021 13:13:06 - INFO - __main__ -     Batch size = 8
+04/05/2021 13:20:56 - WARNING - optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+04/05/2021 13:20:57 - WARNING - optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+04/05/2021 13:20:57 - WARNING - optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+04/05/2021 13:21:04 - INFO - __main__ -   validation loss: 48.858306, epoch: 4
+04/05/2021 13:21:05 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 13:21:05 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 13:21:05 - INFO - __main__ -     Num examples = 150
+04/05/2021 13:21:05 - INFO - __main__ -     Batch size = 8
+04/05/2021 13:21:08 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 13:21:08 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 13:21:08 - INFO - __main__ -     Num examples = 800
+04/05/2021 13:21:08 - INFO - __main__ -     Batch size = 8
+04/05/2021 13:21:20 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 13:21:20 - INFO - __main__ -   ***** Running training *****
+04/05/2021 13:21:20 - INFO - __main__ -     Num examples = 2895
+04/05/2021 13:21:20 - INFO - __main__ -     Batch size = 4
+04/05/2021 13:21:20 - INFO - __main__ -     Num steps = 2892
+04/05/2021 13:21:20 - INFO - __main__ -   ***** Running validations *****
+04/05/2021 13:21:20 - INFO - __main__ -     Num orig examples = 150
+04/05/2021 13:21:20 - INFO - __main__ -     Num split examples = 150
+04/05/2021 13:21:20 - INFO - __main__ -     Batch size = 4
+04/05/2021 13:21:20 - INFO - modeling -   loading archive file pt_model/laptop_pt/
+04/05/2021 13:21:20 - INFO - modeling -   Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 512,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "type_vocab_size": 2,
+  "vocab_size": 30522
+}
+
+04/05/2021 13:21:22 - INFO - modeling -   Weights of BertForABSA not initialized from pretrained model: ['groie.pre_layers.0.attention.self.query.weight', 'groie.pre_layers.0.attention.self.query.bias', 'groie.pre_layers.0.attention.self.key.weight', 'groie.pre_layers.0.attention.self.key.bias', 'groie.pre_layers.0.attention.self.value.weight', 'groie.pre_layers.0.attention.self.value.bias', 'groie.pre_layers.0.attention.output.dense.weight', 'groie.pre_layers.0.attention.output.dense.bias', 'groie.pre_layers.0.attention.output.LayerNorm.weight', 'groie.pre_layers.0.attention.output.LayerNorm.bias', 'groie.pre_layers.0.intermediate.dense.weight', 'groie.pre_layers.0.intermediate.dense.bias', 'groie.pre_layers.0.output.dense.weight', 'groie.pre_layers.0.output.dense.bias', 'groie.pre_layers.0.output.LayerNorm.weight', 'groie.pre_layers.0.output.LayerNorm.bias', 'groie.pre_layers.1.attention.self.query.weight', 'groie.pre_layers.1.attention.self.query.bias', 'groie.pre_layers.1.attention.self.key.weight', 'groie.pre_layers.1.attention.self.key.bias', 'groie.pre_layers.1.attention.self.value.weight', 'groie.pre_layers.1.attention.self.value.bias', 'groie.pre_layers.1.attention.output.dense.weight', 'groie.pre_layers.1.attention.output.dense.bias', 'groie.pre_layers.1.attention.output.LayerNorm.weight', 'groie.pre_layers.1.attention.output.LayerNorm.bias', 'groie.pre_layers.1.intermediate.dense.weight', 'groie.pre_layers.1.intermediate.dense.bias', 'groie.pre_layers.1.output.dense.weight', 'groie.pre_layers.1.output.dense.bias', 'groie.pre_layers.1.output.LayerNorm.weight', 'groie.pre_layers.1.output.LayerNorm.bias', 'groie.pre_layers.2.attention.self.query.weight', 'groie.pre_layers.2.attention.self.query.bias', 'groie.pre_layers.2.attention.self.key.weight', 'groie.pre_layers.2.attention.self.key.bias', 'groie.pre_layers.2.attention.self.value.weight', 'groie.pre_layers.2.attention.self.value.bias', 'groie.pre_layers.2.attention.output.dense.weight', 'groie.pre_layers.2.attention.output.dense.bias', 'groie.pre_layers.2.attention.output.LayerNorm.weight', 'groie.pre_layers.2.attention.output.LayerNorm.bias', 'groie.pre_layers.2.intermediate.dense.weight', 'groie.pre_layers.2.intermediate.dense.bias', 'groie.pre_layers.2.output.dense.weight', 'groie.pre_layers.2.output.dense.bias', 'groie.pre_layers.2.output.LayerNorm.weight', 'groie.pre_layers.2.output.LayerNorm.bias', 'groie.pre_layers.3.attention.self.query.weight', 'groie.pre_layers.3.attention.self.query.bias', 'groie.pre_layers.3.attention.self.key.weight', 'groie.pre_layers.3.attention.self.key.bias', 'groie.pre_layers.3.attention.self.value.weight', 'groie.pre_layers.3.attention.self.value.bias', 'groie.pre_layers.3.attention.output.dense.weight', 'groie.pre_layers.3.attention.output.dense.bias', 'groie.pre_layers.3.attention.output.LayerNorm.weight', 'groie.pre_layers.3.attention.output.LayerNorm.bias', 'groie.pre_layers.3.intermediate.dense.weight', 'groie.pre_layers.3.intermediate.dense.bias', 'groie.pre_layers.3.output.dense.weight', 'groie.pre_layers.3.output.dense.bias', 'groie.pre_layers.3.output.LayerNorm.weight', 'groie.pre_layers.3.output.LayerNorm.bias', 'groie.crf_layers.0.start_transitions', 'groie.crf_layers.0.end_transitions', 'groie.crf_layers.0.transitions', 'groie.crf_layers.1.start_transitions', 'groie.crf_layers.1.end_transitions', 'groie.crf_layers.1.transitions', 'groie.crf_layers.2.start_transitions', 'groie.crf_layers.2.end_transitions', 'groie.crf_layers.2.transitions', 'groie.crf_layers.3.start_transitions', 'groie.crf_layers.3.end_transitions', 'groie.crf_layers.3.transitions', 'groie.classifier.weight', 'groie.classifier.bias']
+04/05/2021 13:21:22 - INFO - modeling -   Weights from pretrained model not used in BertForABSA: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'qa_outputs.weight', 'qa_outputs.bias']
+04/05/2021 13:29:19 - INFO - __main__ -   validation loss: 24.879698, epoch: 1
+04/05/2021 13:29:20 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 13:29:20 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 13:29:20 - INFO - __main__ -     Num examples = 150
+04/05/2021 13:29:20 - INFO - __main__ -     Batch size = 8
+04/05/2021 13:37:18 - INFO - __main__ -   validation loss: 39.332081, epoch: 2
+04/05/2021 13:37:19 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 13:37:20 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 13:37:20 - INFO - __main__ -     Num examples = 150
+04/05/2021 13:37:20 - INFO - __main__ -     Batch size = 8
+04/05/2021 13:45:21 - INFO - __main__ -   validation loss: 49.846410, epoch: 3
+04/05/2021 13:45:22 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 13:45:22 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 13:45:22 - INFO - __main__ -     Num examples = 150
+04/05/2021 13:45:22 - INFO - __main__ -     Batch size = 8
+04/05/2021 13:53:12 - WARNING - optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+04/05/2021 13:53:12 - WARNING - optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+04/05/2021 13:53:13 - WARNING - optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+04/05/2021 13:53:19 - INFO - __main__ -   validation loss: 51.333170, epoch: 4
+04/05/2021 13:53:20 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 13:53:20 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 13:53:20 - INFO - __main__ -     Num examples = 150
+04/05/2021 13:53:20 - INFO - __main__ -     Batch size = 8
+04/05/2021 13:53:24 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 13:53:24 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 13:53:24 - INFO - __main__ -     Num examples = 800
+04/05/2021 13:53:24 - INFO - __main__ -     Batch size = 8
+04/05/2021 13:53:36 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 13:53:36 - INFO - __main__ -   ***** Running training *****
+04/05/2021 13:53:36 - INFO - __main__ -     Num examples = 2895
+04/05/2021 13:53:36 - INFO - __main__ -     Batch size = 4
+04/05/2021 13:53:36 - INFO - __main__ -     Num steps = 2892
+04/05/2021 13:53:36 - INFO - __main__ -   ***** Running validations *****
+04/05/2021 13:53:36 - INFO - __main__ -     Num orig examples = 150
+04/05/2021 13:53:36 - INFO - __main__ -     Num split examples = 150
+04/05/2021 13:53:36 - INFO - __main__ -     Batch size = 4
+04/05/2021 13:53:36 - INFO - modeling -   loading archive file pt_model/laptop_pt/
+04/05/2021 13:53:36 - INFO - modeling -   Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 512,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "type_vocab_size": 2,
+  "vocab_size": 30522
+}
+
+04/05/2021 13:53:38 - INFO - modeling -   Weights of BertForABSA not initialized from pretrained model: ['groie.pre_layers.0.attention.self.query.weight', 'groie.pre_layers.0.attention.self.query.bias', 'groie.pre_layers.0.attention.self.key.weight', 'groie.pre_layers.0.attention.self.key.bias', 'groie.pre_layers.0.attention.self.value.weight', 'groie.pre_layers.0.attention.self.value.bias', 'groie.pre_layers.0.attention.output.dense.weight', 'groie.pre_layers.0.attention.output.dense.bias', 'groie.pre_layers.0.attention.output.LayerNorm.weight', 'groie.pre_layers.0.attention.output.LayerNorm.bias', 'groie.pre_layers.0.intermediate.dense.weight', 'groie.pre_layers.0.intermediate.dense.bias', 'groie.pre_layers.0.output.dense.weight', 'groie.pre_layers.0.output.dense.bias', 'groie.pre_layers.0.output.LayerNorm.weight', 'groie.pre_layers.0.output.LayerNorm.bias', 'groie.pre_layers.1.attention.self.query.weight', 'groie.pre_layers.1.attention.self.query.bias', 'groie.pre_layers.1.attention.self.key.weight', 'groie.pre_layers.1.attention.self.key.bias', 'groie.pre_layers.1.attention.self.value.weight', 'groie.pre_layers.1.attention.self.value.bias', 'groie.pre_layers.1.attention.output.dense.weight', 'groie.pre_layers.1.attention.output.dense.bias', 'groie.pre_layers.1.attention.output.LayerNorm.weight', 'groie.pre_layers.1.attention.output.LayerNorm.bias', 'groie.pre_layers.1.intermediate.dense.weight', 'groie.pre_layers.1.intermediate.dense.bias', 'groie.pre_layers.1.output.dense.weight', 'groie.pre_layers.1.output.dense.bias', 'groie.pre_layers.1.output.LayerNorm.weight', 'groie.pre_layers.1.output.LayerNorm.bias', 'groie.pre_layers.2.attention.self.query.weight', 'groie.pre_layers.2.attention.self.query.bias', 'groie.pre_layers.2.attention.self.key.weight', 'groie.pre_layers.2.attention.self.key.bias', 'groie.pre_layers.2.attention.self.value.weight', 'groie.pre_layers.2.attention.self.value.bias', 'groie.pre_layers.2.attention.output.dense.weight', 'groie.pre_layers.2.attention.output.dense.bias', 'groie.pre_layers.2.attention.output.LayerNorm.weight', 'groie.pre_layers.2.attention.output.LayerNorm.bias', 'groie.pre_layers.2.intermediate.dense.weight', 'groie.pre_layers.2.intermediate.dense.bias', 'groie.pre_layers.2.output.dense.weight', 'groie.pre_layers.2.output.dense.bias', 'groie.pre_layers.2.output.LayerNorm.weight', 'groie.pre_layers.2.output.LayerNorm.bias', 'groie.pre_layers.3.attention.self.query.weight', 'groie.pre_layers.3.attention.self.query.bias', 'groie.pre_layers.3.attention.self.key.weight', 'groie.pre_layers.3.attention.self.key.bias', 'groie.pre_layers.3.attention.self.value.weight', 'groie.pre_layers.3.attention.self.value.bias', 'groie.pre_layers.3.attention.output.dense.weight', 'groie.pre_layers.3.attention.output.dense.bias', 'groie.pre_layers.3.attention.output.LayerNorm.weight', 'groie.pre_layers.3.attention.output.LayerNorm.bias', 'groie.pre_layers.3.intermediate.dense.weight', 'groie.pre_layers.3.intermediate.dense.bias', 'groie.pre_layers.3.output.dense.weight', 'groie.pre_layers.3.output.dense.bias', 'groie.pre_layers.3.output.LayerNorm.weight', 'groie.pre_layers.3.output.LayerNorm.bias', 'groie.crf_layers.0.start_transitions', 'groie.crf_layers.0.end_transitions', 'groie.crf_layers.0.transitions', 'groie.crf_layers.1.start_transitions', 'groie.crf_layers.1.end_transitions', 'groie.crf_layers.1.transitions', 'groie.crf_layers.2.start_transitions', 'groie.crf_layers.2.end_transitions', 'groie.crf_layers.2.transitions', 'groie.crf_layers.3.start_transitions', 'groie.crf_layers.3.end_transitions', 'groie.crf_layers.3.transitions', 'groie.classifier.weight', 'groie.classifier.bias']
+04/05/2021 13:53:38 - INFO - modeling -   Weights from pretrained model not used in BertForABSA: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'qa_outputs.weight', 'qa_outputs.bias']
+04/05/2021 14:01:36 - INFO - __main__ -   validation loss: 31.975779, epoch: 1
+04/05/2021 14:01:37 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 14:01:37 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 14:01:37 - INFO - __main__ -     Num examples = 150
+04/05/2021 14:01:37 - INFO - __main__ -     Batch size = 8
+04/05/2021 14:09:34 - INFO - __main__ -   validation loss: 38.945558, epoch: 2
+04/05/2021 14:09:36 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 14:09:36 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 14:09:36 - INFO - __main__ -     Num examples = 150
+04/05/2021 14:09:36 - INFO - __main__ -     Batch size = 8
+04/05/2021 14:17:33 - INFO - __main__ -   validation loss: 49.390310, epoch: 3
+04/05/2021 14:17:34 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 14:17:34 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 14:17:34 - INFO - __main__ -     Num examples = 150
+04/05/2021 14:17:34 - INFO - __main__ -     Batch size = 8
+04/05/2021 14:25:25 - WARNING - optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+04/05/2021 14:25:25 - WARNING - optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+04/05/2021 14:25:26 - WARNING - optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+04/05/2021 14:25:32 - INFO - __main__ -   validation loss: 52.339602, epoch: 4
+04/05/2021 14:25:34 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 14:25:34 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 14:25:34 - INFO - __main__ -     Num examples = 150
+04/05/2021 14:25:34 - INFO - __main__ -     Batch size = 8
+04/05/2021 14:25:38 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 14:25:38 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 14:25:38 - INFO - __main__ -     Num examples = 800
+04/05/2021 14:25:38 - INFO - __main__ -     Batch size = 8
+04/05/2021 14:25:50 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 14:25:50 - INFO - __main__ -   ***** Running training *****
+04/05/2021 14:25:50 - INFO - __main__ -     Num examples = 2895
+04/05/2021 14:25:50 - INFO - __main__ -     Batch size = 4
+04/05/2021 14:25:50 - INFO - __main__ -     Num steps = 2892
+04/05/2021 14:25:50 - INFO - __main__ -   ***** Running validations *****
+04/05/2021 14:25:50 - INFO - __main__ -     Num orig examples = 150
+04/05/2021 14:25:50 - INFO - __main__ -     Num split examples = 150
+04/05/2021 14:25:50 - INFO - __main__ -     Batch size = 4
+04/05/2021 14:25:50 - INFO - modeling -   loading archive file pt_model/laptop_pt/
+04/05/2021 14:25:50 - INFO - modeling -   Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 512,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "type_vocab_size": 2,
+  "vocab_size": 30522
+}
+
+04/05/2021 14:25:52 - INFO - modeling -   Weights of BertForABSA not initialized from pretrained model: ['groie.pre_layers.0.attention.self.query.weight', 'groie.pre_layers.0.attention.self.query.bias', 'groie.pre_layers.0.attention.self.key.weight', 'groie.pre_layers.0.attention.self.key.bias', 'groie.pre_layers.0.attention.self.value.weight', 'groie.pre_layers.0.attention.self.value.bias', 'groie.pre_layers.0.attention.output.dense.weight', 'groie.pre_layers.0.attention.output.dense.bias', 'groie.pre_layers.0.attention.output.LayerNorm.weight', 'groie.pre_layers.0.attention.output.LayerNorm.bias', 'groie.pre_layers.0.intermediate.dense.weight', 'groie.pre_layers.0.intermediate.dense.bias', 'groie.pre_layers.0.output.dense.weight', 'groie.pre_layers.0.output.dense.bias', 'groie.pre_layers.0.output.LayerNorm.weight', 'groie.pre_layers.0.output.LayerNorm.bias', 'groie.pre_layers.1.attention.self.query.weight', 'groie.pre_layers.1.attention.self.query.bias', 'groie.pre_layers.1.attention.self.key.weight', 'groie.pre_layers.1.attention.self.key.bias', 'groie.pre_layers.1.attention.self.value.weight', 'groie.pre_layers.1.attention.self.value.bias', 'groie.pre_layers.1.attention.output.dense.weight', 'groie.pre_layers.1.attention.output.dense.bias', 'groie.pre_layers.1.attention.output.LayerNorm.weight', 'groie.pre_layers.1.attention.output.LayerNorm.bias', 'groie.pre_layers.1.intermediate.dense.weight', 'groie.pre_layers.1.intermediate.dense.bias', 'groie.pre_layers.1.output.dense.weight', 'groie.pre_layers.1.output.dense.bias', 'groie.pre_layers.1.output.LayerNorm.weight', 'groie.pre_layers.1.output.LayerNorm.bias', 'groie.pre_layers.2.attention.self.query.weight', 'groie.pre_layers.2.attention.self.query.bias', 'groie.pre_layers.2.attention.self.key.weight', 'groie.pre_layers.2.attention.self.key.bias', 'groie.pre_layers.2.attention.self.value.weight', 'groie.pre_layers.2.attention.self.value.bias', 'groie.pre_layers.2.attention.output.dense.weight', 'groie.pre_layers.2.attention.output.dense.bias', 'groie.pre_layers.2.attention.output.LayerNorm.weight', 'groie.pre_layers.2.attention.output.LayerNorm.bias', 'groie.pre_layers.2.intermediate.dense.weight', 'groie.pre_layers.2.intermediate.dense.bias', 'groie.pre_layers.2.output.dense.weight', 'groie.pre_layers.2.output.dense.bias', 'groie.pre_layers.2.output.LayerNorm.weight', 'groie.pre_layers.2.output.LayerNorm.bias', 'groie.pre_layers.3.attention.self.query.weight', 'groie.pre_layers.3.attention.self.query.bias', 'groie.pre_layers.3.attention.self.key.weight', 'groie.pre_layers.3.attention.self.key.bias', 'groie.pre_layers.3.attention.self.value.weight', 'groie.pre_layers.3.attention.self.value.bias', 'groie.pre_layers.3.attention.output.dense.weight', 'groie.pre_layers.3.attention.output.dense.bias', 'groie.pre_layers.3.attention.output.LayerNorm.weight', 'groie.pre_layers.3.attention.output.LayerNorm.bias', 'groie.pre_layers.3.intermediate.dense.weight', 'groie.pre_layers.3.intermediate.dense.bias', 'groie.pre_layers.3.output.dense.weight', 'groie.pre_layers.3.output.dense.bias', 'groie.pre_layers.3.output.LayerNorm.weight', 'groie.pre_layers.3.output.LayerNorm.bias', 'groie.crf_layers.0.start_transitions', 'groie.crf_layers.0.end_transitions', 'groie.crf_layers.0.transitions', 'groie.crf_layers.1.start_transitions', 'groie.crf_layers.1.end_transitions', 'groie.crf_layers.1.transitions', 'groie.crf_layers.2.start_transitions', 'groie.crf_layers.2.end_transitions', 'groie.crf_layers.2.transitions', 'groie.crf_layers.3.start_transitions', 'groie.crf_layers.3.end_transitions', 'groie.crf_layers.3.transitions', 'groie.classifier.weight', 'groie.classifier.bias']
+04/05/2021 14:25:52 - INFO - modeling -   Weights from pretrained model not used in BertForABSA: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'qa_outputs.weight', 'qa_outputs.bias']
+04/05/2021 14:33:50 - INFO - __main__ -   validation loss: 27.416609, epoch: 1
+04/05/2021 14:33:51 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 14:33:51 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 14:33:51 - INFO - __main__ -     Num examples = 150
+04/05/2021 14:33:51 - INFO - __main__ -     Batch size = 8
+04/05/2021 14:41:53 - INFO - __main__ -   validation loss: 38.387987, epoch: 2
+04/05/2021 14:41:54 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 14:41:54 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 14:41:54 - INFO - __main__ -     Num examples = 150
+04/05/2021 14:41:54 - INFO - __main__ -     Batch size = 8
+04/05/2021 14:50:57 - INFO - __main__ -   validation loss: 46.390951, epoch: 3
+04/05/2021 14:50:58 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 14:50:58 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 14:50:58 - INFO - __main__ -     Num examples = 150
+04/05/2021 14:50:58 - INFO - __main__ -     Batch size = 8
+04/05/2021 15:00:40 - WARNING - optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+04/05/2021 15:00:40 - WARNING - optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+04/05/2021 15:00:41 - WARNING - optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+04/05/2021 15:00:49 - INFO - __main__ -   validation loss: 49.331429, epoch: 4
+04/05/2021 15:00:50 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 15:00:50 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 15:00:50 - INFO - __main__ -     Num examples = 150
+04/05/2021 15:00:50 - INFO - __main__ -     Batch size = 8
+04/05/2021 15:00:58 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 15:00:58 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 15:00:58 - INFO - __main__ -     Num examples = 800
+04/05/2021 15:00:58 - INFO - __main__ -     Batch size = 8
+04/05/2021 15:01:12 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 15:01:12 - INFO - __main__ -   ***** Running training *****
+04/05/2021 15:01:12 - INFO - __main__ -     Num examples = 2895
+04/05/2021 15:01:12 - INFO - __main__ -     Batch size = 4
+04/05/2021 15:01:12 - INFO - __main__ -     Num steps = 2892
+04/05/2021 15:01:12 - INFO - __main__ -   ***** Running validations *****
+04/05/2021 15:01:12 - INFO - __main__ -     Num orig examples = 150
+04/05/2021 15:01:12 - INFO - __main__ -     Num split examples = 150
+04/05/2021 15:01:12 - INFO - __main__ -     Batch size = 4
+04/05/2021 15:01:12 - INFO - modeling -   loading archive file pt_model/laptop_pt/
+04/05/2021 15:01:12 - INFO - modeling -   Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 512,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "type_vocab_size": 2,
+  "vocab_size": 30522
+}
+
+04/05/2021 15:01:14 - INFO - modeling -   Weights of BertForABSA not initialized from pretrained model: ['groie.pre_layers.0.attention.self.query.weight', 'groie.pre_layers.0.attention.self.query.bias', 'groie.pre_layers.0.attention.self.key.weight', 'groie.pre_layers.0.attention.self.key.bias', 'groie.pre_layers.0.attention.self.value.weight', 'groie.pre_layers.0.attention.self.value.bias', 'groie.pre_layers.0.attention.output.dense.weight', 'groie.pre_layers.0.attention.output.dense.bias', 'groie.pre_layers.0.attention.output.LayerNorm.weight', 'groie.pre_layers.0.attention.output.LayerNorm.bias', 'groie.pre_layers.0.intermediate.dense.weight', 'groie.pre_layers.0.intermediate.dense.bias', 'groie.pre_layers.0.output.dense.weight', 'groie.pre_layers.0.output.dense.bias', 'groie.pre_layers.0.output.LayerNorm.weight', 'groie.pre_layers.0.output.LayerNorm.bias', 'groie.pre_layers.1.attention.self.query.weight', 'groie.pre_layers.1.attention.self.query.bias', 'groie.pre_layers.1.attention.self.key.weight', 'groie.pre_layers.1.attention.self.key.bias', 'groie.pre_layers.1.attention.self.value.weight', 'groie.pre_layers.1.attention.self.value.bias', 'groie.pre_layers.1.attention.output.dense.weight', 'groie.pre_layers.1.attention.output.dense.bias', 'groie.pre_layers.1.attention.output.LayerNorm.weight', 'groie.pre_layers.1.attention.output.LayerNorm.bias', 'groie.pre_layers.1.intermediate.dense.weight', 'groie.pre_layers.1.intermediate.dense.bias', 'groie.pre_layers.1.output.dense.weight', 'groie.pre_layers.1.output.dense.bias', 'groie.pre_layers.1.output.LayerNorm.weight', 'groie.pre_layers.1.output.LayerNorm.bias', 'groie.pre_layers.2.attention.self.query.weight', 'groie.pre_layers.2.attention.self.query.bias', 'groie.pre_layers.2.attention.self.key.weight', 'groie.pre_layers.2.attention.self.key.bias', 'groie.pre_layers.2.attention.self.value.weight', 'groie.pre_layers.2.attention.self.value.bias', 'groie.pre_layers.2.attention.output.dense.weight', 'groie.pre_layers.2.attention.output.dense.bias', 'groie.pre_layers.2.attention.output.LayerNorm.weight', 'groie.pre_layers.2.attention.output.LayerNorm.bias', 'groie.pre_layers.2.intermediate.dense.weight', 'groie.pre_layers.2.intermediate.dense.bias', 'groie.pre_layers.2.output.dense.weight', 'groie.pre_layers.2.output.dense.bias', 'groie.pre_layers.2.output.LayerNorm.weight', 'groie.pre_layers.2.output.LayerNorm.bias', 'groie.pre_layers.3.attention.self.query.weight', 'groie.pre_layers.3.attention.self.query.bias', 'groie.pre_layers.3.attention.self.key.weight', 'groie.pre_layers.3.attention.self.key.bias', 'groie.pre_layers.3.attention.self.value.weight', 'groie.pre_layers.3.attention.self.value.bias', 'groie.pre_layers.3.attention.output.dense.weight', 'groie.pre_layers.3.attention.output.dense.bias', 'groie.pre_layers.3.attention.output.LayerNorm.weight', 'groie.pre_layers.3.attention.output.LayerNorm.bias', 'groie.pre_layers.3.intermediate.dense.weight', 'groie.pre_layers.3.intermediate.dense.bias', 'groie.pre_layers.3.output.dense.weight', 'groie.pre_layers.3.output.dense.bias', 'groie.pre_layers.3.output.LayerNorm.weight', 'groie.pre_layers.3.output.LayerNorm.bias', 'groie.crf_layers.0.start_transitions', 'groie.crf_layers.0.end_transitions', 'groie.crf_layers.0.transitions', 'groie.crf_layers.1.start_transitions', 'groie.crf_layers.1.end_transitions', 'groie.crf_layers.1.transitions', 'groie.crf_layers.2.start_transitions', 'groie.crf_layers.2.end_transitions', 'groie.crf_layers.2.transitions', 'groie.crf_layers.3.start_transitions', 'groie.crf_layers.3.end_transitions', 'groie.crf_layers.3.transitions', 'groie.classifier.weight', 'groie.classifier.bias']
+04/05/2021 15:01:14 - INFO - modeling -   Weights from pretrained model not used in BertForABSA: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'qa_outputs.weight', 'qa_outputs.bias']
+04/05/2021 15:11:03 - INFO - __main__ -   validation loss: 36.405096, epoch: 1
+04/05/2021 15:11:05 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 15:11:05 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 15:11:05 - INFO - __main__ -     Num examples = 150
+04/05/2021 15:11:05 - INFO - __main__ -     Batch size = 8
+04/05/2021 15:20:34 - INFO - __main__ -   validation loss: 43.030140, epoch: 2
+04/05/2021 15:20:35 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 15:20:35 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 15:20:35 - INFO - __main__ -     Num examples = 150
+04/05/2021 15:20:35 - INFO - __main__ -     Batch size = 8
+04/05/2021 15:29:38 - INFO - __main__ -   validation loss: 48.350566, epoch: 3
+04/05/2021 15:29:39 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 15:29:39 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 15:29:39 - INFO - __main__ -     Num examples = 150
+04/05/2021 15:29:39 - INFO - __main__ -     Batch size = 8
+04/05/2021 15:38:55 - WARNING - optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+04/05/2021 15:38:56 - WARNING - optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+04/05/2021 15:38:57 - WARNING - optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+04/05/2021 15:39:05 - INFO - __main__ -   validation loss: 52.840590, epoch: 4
+04/05/2021 15:39:07 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 15:39:07 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 15:39:07 - INFO - __main__ -     Num examples = 150
+04/05/2021 15:39:07 - INFO - __main__ -     Batch size = 8
+04/05/2021 15:39:11 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 15:39:11 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 15:39:11 - INFO - __main__ -     Num examples = 800
+04/05/2021 15:39:11 - INFO - __main__ -     Batch size = 8
+04/05/2021 15:39:25 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 15:39:25 - INFO - __main__ -   ***** Running training *****
+04/05/2021 15:39:25 - INFO - __main__ -     Num examples = 2895
+04/05/2021 15:39:25 - INFO - __main__ -     Batch size = 4
+04/05/2021 15:39:25 - INFO - __main__ -     Num steps = 2892
+04/05/2021 15:39:25 - INFO - __main__ -   ***** Running validations *****
+04/05/2021 15:39:25 - INFO - __main__ -     Num orig examples = 150
+04/05/2021 15:39:25 - INFO - __main__ -     Num split examples = 150
+04/05/2021 15:39:25 - INFO - __main__ -     Batch size = 4
+04/05/2021 15:39:25 - INFO - modeling -   loading archive file pt_model/laptop_pt/
+04/05/2021 15:39:25 - INFO - modeling -   Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 512,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "type_vocab_size": 2,
+  "vocab_size": 30522
+}
+
+04/05/2021 15:39:28 - INFO - modeling -   Weights of BertForABSA not initialized from pretrained model: ['groie.pre_layers.0.attention.self.query.weight', 'groie.pre_layers.0.attention.self.query.bias', 'groie.pre_layers.0.attention.self.key.weight', 'groie.pre_layers.0.attention.self.key.bias', 'groie.pre_layers.0.attention.self.value.weight', 'groie.pre_layers.0.attention.self.value.bias', 'groie.pre_layers.0.attention.output.dense.weight', 'groie.pre_layers.0.attention.output.dense.bias', 'groie.pre_layers.0.attention.output.LayerNorm.weight', 'groie.pre_layers.0.attention.output.LayerNorm.bias', 'groie.pre_layers.0.intermediate.dense.weight', 'groie.pre_layers.0.intermediate.dense.bias', 'groie.pre_layers.0.output.dense.weight', 'groie.pre_layers.0.output.dense.bias', 'groie.pre_layers.0.output.LayerNorm.weight', 'groie.pre_layers.0.output.LayerNorm.bias', 'groie.pre_layers.1.attention.self.query.weight', 'groie.pre_layers.1.attention.self.query.bias', 'groie.pre_layers.1.attention.self.key.weight', 'groie.pre_layers.1.attention.self.key.bias', 'groie.pre_layers.1.attention.self.value.weight', 'groie.pre_layers.1.attention.self.value.bias', 'groie.pre_layers.1.attention.output.dense.weight', 'groie.pre_layers.1.attention.output.dense.bias', 'groie.pre_layers.1.attention.output.LayerNorm.weight', 'groie.pre_layers.1.attention.output.LayerNorm.bias', 'groie.pre_layers.1.intermediate.dense.weight', 'groie.pre_layers.1.intermediate.dense.bias', 'groie.pre_layers.1.output.dense.weight', 'groie.pre_layers.1.output.dense.bias', 'groie.pre_layers.1.output.LayerNorm.weight', 'groie.pre_layers.1.output.LayerNorm.bias', 'groie.pre_layers.2.attention.self.query.weight', 'groie.pre_layers.2.attention.self.query.bias', 'groie.pre_layers.2.attention.self.key.weight', 'groie.pre_layers.2.attention.self.key.bias', 'groie.pre_layers.2.attention.self.value.weight', 'groie.pre_layers.2.attention.self.value.bias', 'groie.pre_layers.2.attention.output.dense.weight', 'groie.pre_layers.2.attention.output.dense.bias', 'groie.pre_layers.2.attention.output.LayerNorm.weight', 'groie.pre_layers.2.attention.output.LayerNorm.bias', 'groie.pre_layers.2.intermediate.dense.weight', 'groie.pre_layers.2.intermediate.dense.bias', 'groie.pre_layers.2.output.dense.weight', 'groie.pre_layers.2.output.dense.bias', 'groie.pre_layers.2.output.LayerNorm.weight', 'groie.pre_layers.2.output.LayerNorm.bias', 'groie.pre_layers.3.attention.self.query.weight', 'groie.pre_layers.3.attention.self.query.bias', 'groie.pre_layers.3.attention.self.key.weight', 'groie.pre_layers.3.attention.self.key.bias', 'groie.pre_layers.3.attention.self.value.weight', 'groie.pre_layers.3.attention.self.value.bias', 'groie.pre_layers.3.attention.output.dense.weight', 'groie.pre_layers.3.attention.output.dense.bias', 'groie.pre_layers.3.attention.output.LayerNorm.weight', 'groie.pre_layers.3.attention.output.LayerNorm.bias', 'groie.pre_layers.3.intermediate.dense.weight', 'groie.pre_layers.3.intermediate.dense.bias', 'groie.pre_layers.3.output.dense.weight', 'groie.pre_layers.3.output.dense.bias', 'groie.pre_layers.3.output.LayerNorm.weight', 'groie.pre_layers.3.output.LayerNorm.bias', 'groie.crf_layers.0.start_transitions', 'groie.crf_layers.0.end_transitions', 'groie.crf_layers.0.transitions', 'groie.crf_layers.1.start_transitions', 'groie.crf_layers.1.end_transitions', 'groie.crf_layers.1.transitions', 'groie.crf_layers.2.start_transitions', 'groie.crf_layers.2.end_transitions', 'groie.crf_layers.2.transitions', 'groie.crf_layers.3.start_transitions', 'groie.crf_layers.3.end_transitions', 'groie.crf_layers.3.transitions', 'groie.classifier.weight', 'groie.classifier.bias']
+04/05/2021 15:39:28 - INFO - modeling -   Weights from pretrained model not used in BertForABSA: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'qa_outputs.weight', 'qa_outputs.bias']
+04/05/2021 15:49:14 - INFO - __main__ -   validation loss: 27.640015, epoch: 1
+04/05/2021 15:49:15 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 15:49:15 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 15:49:15 - INFO - __main__ -     Num examples = 150
+04/05/2021 15:49:15 - INFO - __main__ -     Batch size = 8
+04/05/2021 15:59:01 - INFO - __main__ -   validation loss: 34.876089, epoch: 2
+04/05/2021 15:59:02 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 15:59:02 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 15:59:02 - INFO - __main__ -     Num examples = 150
+04/05/2021 15:59:02 - INFO - __main__ -     Batch size = 8
+04/05/2021 16:07:41 - INFO - __main__ -   validation loss: 49.032609, epoch: 3
+04/05/2021 16:07:42 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 16:07:42 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 16:07:42 - INFO - __main__ -     Num examples = 150
+04/05/2021 16:07:42 - INFO - __main__ -     Batch size = 8
+04/05/2021 16:15:34 - WARNING - optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+04/05/2021 16:15:35 - WARNING - optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+04/05/2021 16:15:35 - WARNING - optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+04/05/2021 16:15:42 - INFO - __main__ -   validation loss: 52.255947, epoch: 4
+04/05/2021 16:15:45 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 16:15:45 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 16:15:45 - INFO - __main__ -     Num examples = 150
+04/05/2021 16:15:45 - INFO - __main__ -     Batch size = 8
+04/05/2021 16:15:49 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 16:15:49 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 16:15:49 - INFO - __main__ -     Num examples = 800
+04/05/2021 16:15:49 - INFO - __main__ -     Batch size = 8
+04/05/2021 16:16:01 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 16:16:01 - INFO - __main__ -   ***** Running training *****
+04/05/2021 16:16:01 - INFO - __main__ -     Num examples = 2895
+04/05/2021 16:16:01 - INFO - __main__ -     Batch size = 4
+04/05/2021 16:16:01 - INFO - __main__ -     Num steps = 2892
+04/05/2021 16:16:01 - INFO - __main__ -   ***** Running validations *****
+04/05/2021 16:16:01 - INFO - __main__ -     Num orig examples = 150
+04/05/2021 16:16:01 - INFO - __main__ -     Num split examples = 150
+04/05/2021 16:16:01 - INFO - __main__ -     Batch size = 4
+04/05/2021 16:16:01 - INFO - modeling -   loading archive file pt_model/laptop_pt/
+04/05/2021 16:16:01 - INFO - modeling -   Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 512,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "type_vocab_size": 2,
+  "vocab_size": 30522
+}
+
+04/05/2021 16:16:03 - INFO - modeling -   Weights of BertForABSA not initialized from pretrained model: ['groie.pre_layers.0.attention.self.query.weight', 'groie.pre_layers.0.attention.self.query.bias', 'groie.pre_layers.0.attention.self.key.weight', 'groie.pre_layers.0.attention.self.key.bias', 'groie.pre_layers.0.attention.self.value.weight', 'groie.pre_layers.0.attention.self.value.bias', 'groie.pre_layers.0.attention.output.dense.weight', 'groie.pre_layers.0.attention.output.dense.bias', 'groie.pre_layers.0.attention.output.LayerNorm.weight', 'groie.pre_layers.0.attention.output.LayerNorm.bias', 'groie.pre_layers.0.intermediate.dense.weight', 'groie.pre_layers.0.intermediate.dense.bias', 'groie.pre_layers.0.output.dense.weight', 'groie.pre_layers.0.output.dense.bias', 'groie.pre_layers.0.output.LayerNorm.weight', 'groie.pre_layers.0.output.LayerNorm.bias', 'groie.pre_layers.1.attention.self.query.weight', 'groie.pre_layers.1.attention.self.query.bias', 'groie.pre_layers.1.attention.self.key.weight', 'groie.pre_layers.1.attention.self.key.bias', 'groie.pre_layers.1.attention.self.value.weight', 'groie.pre_layers.1.attention.self.value.bias', 'groie.pre_layers.1.attention.output.dense.weight', 'groie.pre_layers.1.attention.output.dense.bias', 'groie.pre_layers.1.attention.output.LayerNorm.weight', 'groie.pre_layers.1.attention.output.LayerNorm.bias', 'groie.pre_layers.1.intermediate.dense.weight', 'groie.pre_layers.1.intermediate.dense.bias', 'groie.pre_layers.1.output.dense.weight', 'groie.pre_layers.1.output.dense.bias', 'groie.pre_layers.1.output.LayerNorm.weight', 'groie.pre_layers.1.output.LayerNorm.bias', 'groie.pre_layers.2.attention.self.query.weight', 'groie.pre_layers.2.attention.self.query.bias', 'groie.pre_layers.2.attention.self.key.weight', 'groie.pre_layers.2.attention.self.key.bias', 'groie.pre_layers.2.attention.self.value.weight', 'groie.pre_layers.2.attention.self.value.bias', 'groie.pre_layers.2.attention.output.dense.weight', 'groie.pre_layers.2.attention.output.dense.bias', 'groie.pre_layers.2.attention.output.LayerNorm.weight', 'groie.pre_layers.2.attention.output.LayerNorm.bias', 'groie.pre_layers.2.intermediate.dense.weight', 'groie.pre_layers.2.intermediate.dense.bias', 'groie.pre_layers.2.output.dense.weight', 'groie.pre_layers.2.output.dense.bias', 'groie.pre_layers.2.output.LayerNorm.weight', 'groie.pre_layers.2.output.LayerNorm.bias', 'groie.pre_layers.3.attention.self.query.weight', 'groie.pre_layers.3.attention.self.query.bias', 'groie.pre_layers.3.attention.self.key.weight', 'groie.pre_layers.3.attention.self.key.bias', 'groie.pre_layers.3.attention.self.value.weight', 'groie.pre_layers.3.attention.self.value.bias', 'groie.pre_layers.3.attention.output.dense.weight', 'groie.pre_layers.3.attention.output.dense.bias', 'groie.pre_layers.3.attention.output.LayerNorm.weight', 'groie.pre_layers.3.attention.output.LayerNorm.bias', 'groie.pre_layers.3.intermediate.dense.weight', 'groie.pre_layers.3.intermediate.dense.bias', 'groie.pre_layers.3.output.dense.weight', 'groie.pre_layers.3.output.dense.bias', 'groie.pre_layers.3.output.LayerNorm.weight', 'groie.pre_layers.3.output.LayerNorm.bias', 'groie.crf_layers.0.start_transitions', 'groie.crf_layers.0.end_transitions', 'groie.crf_layers.0.transitions', 'groie.crf_layers.1.start_transitions', 'groie.crf_layers.1.end_transitions', 'groie.crf_layers.1.transitions', 'groie.crf_layers.2.start_transitions', 'groie.crf_layers.2.end_transitions', 'groie.crf_layers.2.transitions', 'groie.crf_layers.3.start_transitions', 'groie.crf_layers.3.end_transitions', 'groie.crf_layers.3.transitions', 'groie.classifier.weight', 'groie.classifier.bias']
+04/05/2021 16:16:03 - INFO - modeling -   Weights from pretrained model not used in BertForABSA: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'qa_outputs.weight', 'qa_outputs.bias']
+04/05/2021 16:24:00 - INFO - __main__ -   validation loss: 28.860573, epoch: 1
+04/05/2021 16:24:01 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 16:24:01 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 16:24:01 - INFO - __main__ -     Num examples = 150
+04/05/2021 16:24:01 - INFO - __main__ -     Batch size = 8
+04/05/2021 16:32:00 - INFO - __main__ -   validation loss: 40.104508, epoch: 2
+04/05/2021 16:32:02 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 16:32:02 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 16:32:02 - INFO - __main__ -     Num examples = 150
+04/05/2021 16:32:02 - INFO - __main__ -     Batch size = 8
+04/05/2021 16:40:00 - INFO - __main__ -   validation loss: 46.227828, epoch: 3
+04/05/2021 16:40:01 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 16:40:01 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 16:40:01 - INFO - __main__ -     Num examples = 150
+04/05/2021 16:40:01 - INFO - __main__ -     Batch size = 8
+04/05/2021 16:47:50 - WARNING - optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+04/05/2021 16:47:51 - WARNING - optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+04/05/2021 16:47:52 - WARNING - optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+04/05/2021 16:47:58 - INFO - __main__ -   validation loss: 49.956915, epoch: 4
+04/05/2021 16:47:59 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 16:47:59 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 16:47:59 - INFO - __main__ -     Num examples = 150
+04/05/2021 16:47:59 - INFO - __main__ -     Batch size = 8
+04/05/2021 16:48:03 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 16:48:03 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 16:48:03 - INFO - __main__ -     Num examples = 800
+04/05/2021 16:48:03 - INFO - __main__ -     Batch size = 8
+04/05/2021 16:48:14 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 16:48:15 - INFO - __main__ -   ***** Running training *****
+04/05/2021 16:48:15 - INFO - __main__ -     Num examples = 2895
+04/05/2021 16:48:15 - INFO - __main__ -     Batch size = 4
+04/05/2021 16:48:15 - INFO - __main__ -     Num steps = 2892
+04/05/2021 16:48:15 - INFO - __main__ -   ***** Running validations *****
+04/05/2021 16:48:15 - INFO - __main__ -     Num orig examples = 150
+04/05/2021 16:48:15 - INFO - __main__ -     Num split examples = 150
+04/05/2021 16:48:15 - INFO - __main__ -     Batch size = 4
+04/05/2021 16:48:15 - INFO - modeling -   loading archive file pt_model/laptop_pt/
+04/05/2021 16:48:15 - INFO - modeling -   Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 512,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "type_vocab_size": 2,
+  "vocab_size": 30522
+}
+
+04/05/2021 16:48:17 - INFO - modeling -   Weights of BertForABSA not initialized from pretrained model: ['groie.pre_layers.0.attention.self.query.weight', 'groie.pre_layers.0.attention.self.query.bias', 'groie.pre_layers.0.attention.self.key.weight', 'groie.pre_layers.0.attention.self.key.bias', 'groie.pre_layers.0.attention.self.value.weight', 'groie.pre_layers.0.attention.self.value.bias', 'groie.pre_layers.0.attention.output.dense.weight', 'groie.pre_layers.0.attention.output.dense.bias', 'groie.pre_layers.0.attention.output.LayerNorm.weight', 'groie.pre_layers.0.attention.output.LayerNorm.bias', 'groie.pre_layers.0.intermediate.dense.weight', 'groie.pre_layers.0.intermediate.dense.bias', 'groie.pre_layers.0.output.dense.weight', 'groie.pre_layers.0.output.dense.bias', 'groie.pre_layers.0.output.LayerNorm.weight', 'groie.pre_layers.0.output.LayerNorm.bias', 'groie.pre_layers.1.attention.self.query.weight', 'groie.pre_layers.1.attention.self.query.bias', 'groie.pre_layers.1.attention.self.key.weight', 'groie.pre_layers.1.attention.self.key.bias', 'groie.pre_layers.1.attention.self.value.weight', 'groie.pre_layers.1.attention.self.value.bias', 'groie.pre_layers.1.attention.output.dense.weight', 'groie.pre_layers.1.attention.output.dense.bias', 'groie.pre_layers.1.attention.output.LayerNorm.weight', 'groie.pre_layers.1.attention.output.LayerNorm.bias', 'groie.pre_layers.1.intermediate.dense.weight', 'groie.pre_layers.1.intermediate.dense.bias', 'groie.pre_layers.1.output.dense.weight', 'groie.pre_layers.1.output.dense.bias', 'groie.pre_layers.1.output.LayerNorm.weight', 'groie.pre_layers.1.output.LayerNorm.bias', 'groie.pre_layers.2.attention.self.query.weight', 'groie.pre_layers.2.attention.self.query.bias', 'groie.pre_layers.2.attention.self.key.weight', 'groie.pre_layers.2.attention.self.key.bias', 'groie.pre_layers.2.attention.self.value.weight', 'groie.pre_layers.2.attention.self.value.bias', 'groie.pre_layers.2.attention.output.dense.weight', 'groie.pre_layers.2.attention.output.dense.bias', 'groie.pre_layers.2.attention.output.LayerNorm.weight', 'groie.pre_layers.2.attention.output.LayerNorm.bias', 'groie.pre_layers.2.intermediate.dense.weight', 'groie.pre_layers.2.intermediate.dense.bias', 'groie.pre_layers.2.output.dense.weight', 'groie.pre_layers.2.output.dense.bias', 'groie.pre_layers.2.output.LayerNorm.weight', 'groie.pre_layers.2.output.LayerNorm.bias', 'groie.pre_layers.3.attention.self.query.weight', 'groie.pre_layers.3.attention.self.query.bias', 'groie.pre_layers.3.attention.self.key.weight', 'groie.pre_layers.3.attention.self.key.bias', 'groie.pre_layers.3.attention.self.value.weight', 'groie.pre_layers.3.attention.self.value.bias', 'groie.pre_layers.3.attention.output.dense.weight', 'groie.pre_layers.3.attention.output.dense.bias', 'groie.pre_layers.3.attention.output.LayerNorm.weight', 'groie.pre_layers.3.attention.output.LayerNorm.bias', 'groie.pre_layers.3.intermediate.dense.weight', 'groie.pre_layers.3.intermediate.dense.bias', 'groie.pre_layers.3.output.dense.weight', 'groie.pre_layers.3.output.dense.bias', 'groie.pre_layers.3.output.LayerNorm.weight', 'groie.pre_layers.3.output.LayerNorm.bias', 'groie.crf_layers.0.start_transitions', 'groie.crf_layers.0.end_transitions', 'groie.crf_layers.0.transitions', 'groie.crf_layers.1.start_transitions', 'groie.crf_layers.1.end_transitions', 'groie.crf_layers.1.transitions', 'groie.crf_layers.2.start_transitions', 'groie.crf_layers.2.end_transitions', 'groie.crf_layers.2.transitions', 'groie.crf_layers.3.start_transitions', 'groie.crf_layers.3.end_transitions', 'groie.crf_layers.3.transitions', 'groie.classifier.weight', 'groie.classifier.bias']
+04/05/2021 16:48:17 - INFO - modeling -   Weights from pretrained model not used in BertForABSA: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'qa_outputs.weight', 'qa_outputs.bias']
+04/05/2021 16:56:11 - INFO - __main__ -   validation loss: 27.193358, epoch: 1
+04/05/2021 16:56:12 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 16:56:12 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 16:56:12 - INFO - __main__ -     Num examples = 150
+04/05/2021 16:56:12 - INFO - __main__ -     Batch size = 8
+04/05/2021 17:04:07 - INFO - __main__ -   validation loss: 37.358301, epoch: 2
+04/05/2021 17:04:08 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 17:04:09 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 17:04:09 - INFO - __main__ -     Num examples = 150
+04/05/2021 17:04:09 - INFO - __main__ -     Batch size = 8
+04/05/2021 17:12:03 - INFO - __main__ -   validation loss: 48.115424, epoch: 3
+04/05/2021 17:12:08 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 17:12:08 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 17:12:08 - INFO - __main__ -     Num examples = 150
+04/05/2021 17:12:08 - INFO - __main__ -     Batch size = 8
+04/05/2021 17:20:39 - WARNING - optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+04/05/2021 17:20:40 - WARNING - optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+04/05/2021 17:20:40 - WARNING - optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+04/05/2021 17:20:49 - INFO - __main__ -   validation loss: 48.623257, epoch: 4
+04/05/2021 17:20:50 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 17:20:50 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 17:20:50 - INFO - __main__ -     Num examples = 150
+04/05/2021 17:20:50 - INFO - __main__ -     Batch size = 8
+04/05/2021 17:20:54 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file pt_model/laptop_pt/vocab.txt
+04/05/2021 17:20:54 - INFO - __main__ -   ***** Running evaluation *****
+04/05/2021 17:20:54 - INFO - __main__ -     Num examples = 800
+04/05/2021 17:20:54 - INFO - __main__ -     Batch size = 8
