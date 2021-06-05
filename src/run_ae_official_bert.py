@@ -22,12 +22,13 @@ import numpy as np
 import torch.nn as nn
 import torch
 from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
-from transformers import BertPreTrainedModel as OfficialBertPreTrainedModel, BertModel as OfficialBertModel, \
+from transformers import BertPreTrainedModel, BertModel, \
     BertLayer as OfficialBertLayer, AdamW, get_linear_schedule_with_warmup
 import absa_data_utils as data_utils
 from absa_data_utils import ABSATokenizer
 import modelconfig
 from torchcrf import CRF
+
 
 logger = logging.getLogger(__name__)
 
@@ -73,18 +74,19 @@ class GRoIE(nn.Module):
         return -total_loss, avg_logits
 
 
-class BertForAE(OfficialBertPreTrainedModel):
+class BertForAE(BertPreTrainedModel):
     def __init__(self, config, num_labels=3):
         super(BertForAE, self).__init__(config)
         self.num_labels = num_labels
-        self.bert = OfficialBertModel(config)
+        self.bert = BertModel(config)
         self.groie = GRoIE(4, config, num_labels)
         self.init_weights()
 
     def forward(self, input_ids, token_type_ids=None, attention_mask=None, labels=None):
         out_puts = self.bert(input_ids=input_ids, token_type_ids=token_type_ids,
                              attention_mask=attention_mask,
-                             output_hidden_states=True)
+                             output_hidden_states=True,
+                             output_attentions=True)
         loss, logits = self.groie(out_puts.hidden_states,
                                   self.get_extended_attention_mask(attention_mask, input_ids.size(), None), labels)
         if labels is not None:
@@ -118,7 +120,7 @@ def train(args):
     train_dataloader = DataLoader(train_data, sampler=train_sampler, batch_size=args.train_batch_size)
 
     # >>>>> validation
-    if args.do_valid:
+    if args.no_valid is False:
         valid_examples = processor.get_dev_examples(args.data_dir)
         valid_features = data_utils.convert_examples_to_features(
             valid_examples, label_list, args.max_seq_length, tokenizer, "ae")
@@ -151,11 +153,13 @@ def train(args):
         {'params': [p for n, p in param_optimizer if not any(nd in n for nd in no_decay)], 'weight_decay': 0.01},
         {'params': [p for n, p in param_optimizer if any(nd in n for nd in no_decay)], 'weight_decay': 0.0}
     ]
-    t_total = num_train_steps
+    # t_total = num_train_steps
     ### In 🤗 Transformers, optimizer and schedules are split and instantiated like this:
-    optimizer = AdamW(optimizer_grouped_parameters, lr=args.learning_rate, weight_decay=0.01, correct_bias=False)  # To reproduce BertAdam specific behavior set correct_bias=False
+    optimizer = AdamW(optimizer_grouped_parameters, lr=args.learning_rate, weight_decay=0.01,
+                      correct_bias=False)  # To reproduce BertAdam specific behavior set correct_bias=False
     scheduler = get_linear_schedule_with_warmup(optimizer,
-                                                num_warmup_steps=int(num_train_steps/10), num_training_steps=num_train_steps)  # PyTorch scheduler
+                                                num_warmup_steps=int(num_train_steps / 10),
+                                                num_training_steps=num_train_steps)  # PyTorch scheduler
     global_step = 0
     model.train()
     for epoch in range(args.num_train_epochs):
@@ -165,10 +169,6 @@ def train(args):
 
             loss = model(input_ids, segment_ids, input_mask, label_ids)
             loss.backward()
-
-            lr_this_step = args.learning_rate * warmup_linear(global_step / t_total, args.warmup_proportion)
-            for param_group in optimizer.param_groups:
-                param_group['lr'] = lr_this_step
 
             torch.nn.utils.clip_grad_norm_(model.parameters(),
                                            1.0)  # Gradient clipping is not in AdamW anymore (so you can use amp without issue)
@@ -181,7 +181,7 @@ def train(args):
         print("training loss: ", loss.item(), epoch + 1)
         new_dirs = os.path.join(args.output_dir, str(epoch + 1))
         os.mkdir(new_dirs)
-        if args.do_valid:
+        if args.no_valid is False:
             model.eval()
             with torch.no_grad():
                 losses = []
@@ -195,24 +195,24 @@ def train(args):
                 valid_loss = sum(losses) / valid_size
                 logger.info("validation loss: %f, epoch: %d", valid_loss, epoch + 1)
                 valid_losses.append(valid_loss)
-                torch.save(model, os.path.join(new_dirs, "model.pt"))
-                test(args, new_dirs, dev_as_test=True)
-                if epoch == args.num_train_epochs - 1:
-                    torch.save(model, os.path.join(args.output_dir, "model.pt"))
-                    test(args, args.output_dir, dev_as_test=False)
-                os.remove(os.path.join(new_dirs, "model.pt"))
+                test(args, dev_as_test=True, output_dir=new_dirs, model=model)
             if valid_loss < best_valid_loss:
                 best_valid_loss = valid_loss
             model.train()
-    if args.do_valid:
+
+    if args.no_valid is False:
         with open(os.path.join(args.output_dir, "valid.json"), "w") as fw:
             json.dump({"valid_losses": valid_losses}, fw)
-    else:
-        torch.save(model, os.path.join(args.output_dir, "model.pt"))
+
+    torch.save(model, os.path.join(args.output_dir, "model.pt"))
 
 
-def test(args, new_dirs=None,
-         dev_as_test=None):  # Load a trained model that you have fine-tuned (we assume evaluate on cpu)
+def test(args, dev_as_test=None, output_dir=None, model=None, model_dir=None):  # Load a trained model that you have fine-tuned (we assume evaluate on cpu)
+    if output_dir is None:
+        output_dir = args.output_dir
+    if model_dir is None:
+        model_dir = args.output_dir
+
     processor = data_utils.AeProcessor()
     label_list = processor.get_labels()
     tokenizer = ABSATokenizer.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.bert_model])
@@ -236,9 +236,12 @@ def test(args, new_dirs=None,
     eval_sampler = SequentialSampler(eval_data)
     eval_dataloader = DataLoader(eval_data, sampler=eval_sampler, batch_size=args.eval_batch_size)
 
-    model = torch.load(os.path.join(new_dirs, "model.pt"))
-    model.to(device)
-    model.eval()
+    if model is None:
+        _model = torch.load(os.path.join(model_dir, "model.pt"))
+        _model.to(device)
+        _model.eval()
+    else:
+        _model = model
 
     full_logits = []
     full_label_ids = []
@@ -247,7 +250,7 @@ def test(args, new_dirs=None,
         input_ids, segment_ids, input_mask, label_ids = batch
 
         with torch.no_grad():
-            logits = model(input_ids, segment_ids, input_mask)
+            logits = _model(input_ids, segment_ids, input_mask)
 
         logits = logits.detach().cpu().numpy()
         label_ids = label_ids.cpu().numpy()
@@ -255,7 +258,7 @@ def test(args, new_dirs=None,
         full_logits.extend(logits.tolist())
         full_label_ids.extend(label_ids.tolist())
 
-    output_eval_json = os.path.join(new_dirs, "predictions.json")
+    output_eval_json = os.path.join(output_dir, "predictions.json")
     with open(output_eval_json, "w") as fw:
         assert len(full_logits) == len(eval_examples)
         # sort by original order for evaluation
@@ -293,19 +296,18 @@ def main():
                         help="The maximum total input sequence length after WordPiece tokenization. \n"
                              "Sequences longer than this will be truncated, and sequences shorter \n"
                              "than this will be padded.")
-    parser.add_argument("--do_train",
+    parser.add_argument("--no_valid",
+                        default=False,
+                        action='store_true',
+                        help="Whether to run validation.")
+    parser.add_argument("--only_test",
                         default=False,
                         action='store_true',
                         help="Whether to run training.")
-    parser.add_argument("--do_valid",
+    parser.add_argument("--do_save",
                         default=False,
                         action='store_true',
-                        help="Whether to run training.")
-    parser.add_argument("--do_eval",
-                        default=False,
-                        action='store_true',
-                        help="Whether to run eval on the dev set.")
-
+                        help="Whether to save model after training.")
     parser.add_argument("--train_batch_size",
                         default=32,
                         type=int,
@@ -351,10 +353,13 @@ def main():
         datefmt='%m/%d/%Y %H:%M:%S',
         level=logging.INFO)
 
-    if args.do_train:
+    if args.only_test is False:
         train(args)
-    if args.do_eval:
-        test(args)
+
+    test(args)
+
+    if args.do_save is False:
+        os.remove(os.path.join(args.output_dir, "model.pt"))
 
 
 if __name__ == "__main__":
