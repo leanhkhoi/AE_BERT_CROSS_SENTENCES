@@ -18,17 +18,19 @@ import logging
 import argparse
 import random
 import json
+import time
 import numpy as np
 import torch.nn as nn
 import torch
-from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
+from torch.utils.data import RandomSampler, SequentialSampler
 from transformers import BertPreTrainedModel, BertModel, \
     BertLayer as OfficialBertLayer, AdamW, get_linear_schedule_with_warmup
-import absa_data_utils as data_utils
+from common import get_labels, get_predictions, \
+    get_predictions2, write_result, PreprocessConfig, combine_sentences2, predict, \
+    read_preprocess_load, LoaderConfig, convert_to_features, to_data_loader
 from absa_data_utils import ABSATokenizer
 import modelconfig
 from torchcrf import CRF
-
 
 logger = logging.getLogger(__name__)
 
@@ -63,7 +65,7 @@ class GRoIE(nn.Module):
             layer = self.dropout(layer)
             logits = self.classifier(layer)
             if labels is not None:
-                loss = self.crf_layers[i](logits.view(100, -1, self.num_labels), labels.view(100, -1))
+                loss = self.crf_layers[i](logits.view(128, -1, self.num_labels), labels.view(128, -1))
                 losses.append(loss)
             logitses.append(logits)
         if labels is not None:
@@ -96,48 +98,30 @@ class BertForAE(BertPreTrainedModel):
 
 
 def train(args):
-    processor = data_utils.AeProcessor()
-    label_list = processor.get_labels()
-    tokenizer = ABSATokenizer.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.bert_model])
-    train_examples = processor.get_train_examples(args.data_dir)
-    num_train_steps = int(len(train_examples) / args.train_batch_size) * args.num_train_epochs
+    label_list = get_labels()
+    tokenizer = ABSATokenizer.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.bert_model], do_basic_tokenize=False)
 
-    train_features = data_utils.convert_examples_to_features(
-        train_examples, label_list, args.max_seq_length, tokenizer, "ae")
+    preprocess_config = PreprocessConfig(tokenizer, seq_len=args.max_seq_length, no_context=args.no_context,
+                                         seq_start=args.seq_start)
+    vectorize_config = LoaderConfig(batch_size=args.train_batch_size, sampler=RandomSampler)
+    train_dataloader, train_data = read_preprocess_load(os.path.join(args.data_dir, "train.json"),
+                                                        preprocess_config, vectorize_config)
+
+    num_train_steps = int(len(train_data.sentences) / args.train_batch_size) * args.num_train_epochs
+
     logger.info("***** Running training *****")
-    logger.info("  Num examples = %d", len(train_examples))
+    logger.info("  Num examples = %d", len(train_data.sentences))
     logger.info("  Batch size = %d", args.train_batch_size)
     logger.info("  Num steps = %d", num_train_steps)
 
-    all_input_ids = torch.tensor([f.input_ids for f in train_features], dtype=torch.long)
-    all_segment_ids = torch.tensor([f.segment_ids for f in train_features], dtype=torch.long)
-    all_input_mask = torch.tensor([f.input_mask for f in train_features], dtype=torch.long)
-    all_label_ids = torch.tensor([f.label_id for f in train_features], dtype=torch.long)
-
-    train_data = TensorDataset(all_input_ids, all_segment_ids, all_input_mask, all_label_ids)
-
-    train_sampler = RandomSampler(train_data)
-    train_dataloader = DataLoader(train_data, sampler=train_sampler, batch_size=args.train_batch_size)
-
     # >>>>> validation
     if args.no_valid is False:
-        valid_examples = processor.get_dev_examples(args.data_dir)
-        valid_features = data_utils.convert_examples_to_features(
-            valid_examples, label_list, args.max_seq_length, tokenizer, "ae")
-        valid_all_input_ids = torch.tensor([f.input_ids for f in valid_features], dtype=torch.long)
-        valid_all_segment_ids = torch.tensor([f.segment_ids for f in valid_features], dtype=torch.long)
-        valid_all_input_mask = torch.tensor([f.input_mask for f in valid_features], dtype=torch.long)
-        valid_all_label_ids = torch.tensor([f.label_id for f in valid_features], dtype=torch.long)
-        valid_data = TensorDataset(valid_all_input_ids, valid_all_segment_ids, valid_all_input_mask,
-                                   valid_all_label_ids)
-
+        vectorize_config = LoaderConfig(batch_size=args.train_batch_size, sampler=SequentialSampler)
+        valid_dataloader, valid_data = read_preprocess_load(os.path.join(args.data_dir, "dev.json"),
+                                                            preprocess_config, vectorize_config)
         logger.info("***** Running validations *****")
-        logger.info("  Num orig examples = %d", len(valid_examples))
-        logger.info("  Num split examples = %d", len(valid_features))
+        logger.info("  Num orig examples = %d", len(valid_data.sentences))
         logger.info("  Batch size = %d", args.train_batch_size)
-
-        valid_sampler = SequentialSampler(valid_data)
-        valid_dataloader = DataLoader(valid_data, sampler=valid_sampler, batch_size=args.train_batch_size)
 
         best_valid_loss = float('inf')
         valid_losses = []
@@ -172,12 +156,13 @@ def train(args):
 
             torch.nn.utils.clip_grad_norm_(model.parameters(),
                                            1.0)  # Gradient clipping is not in AdamW anymore (so you can use amp without issue)
+
             optimizer.step()
             scheduler.step()
 
             optimizer.zero_grad()
             global_step += 1
-            # >>>> perform validation at the end of each epoch .
+            # >>>> perform validation at the end of each epoch.
         print("training loss: ", loss.item(), epoch + 1)
         new_dirs = os.path.join(args.output_dir, str(epoch + 1))
         os.mkdir(new_dirs)
@@ -207,34 +192,28 @@ def train(args):
     torch.save(model, os.path.join(args.output_dir, "model.pt"))
 
 
-def test(args, dev_as_test=None, output_dir=None, model=None, model_dir=None):  # Load a trained model that you have fine-tuned (we assume evaluate on cpu)
+def test(args, dev_as_test=None, output_dir=None, model=None,
+         model_dir=None):  # Load a trained model that you have fine-tuned (we assume evaluate on cpu)
     if output_dir is None:
         output_dir = args.output_dir
     if model_dir is None:
         model_dir = args.output_dir
 
-    processor = data_utils.AeProcessor()
-    label_list = processor.get_labels()
     tokenizer = ABSATokenizer.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.bert_model])
     if dev_as_test:
         data_dir = os.path.join(args.data_dir, 'dev_as_test')
     else:
         data_dir = args.data_dir
-    eval_examples = processor.get_test_examples(data_dir)
-    eval_features = data_utils.convert_examples_to_features(eval_examples, label_list, args.max_seq_length, tokenizer,
-                                                            "ae")
+
+    preprocess_config = PreprocessConfig(tokenizer, seq_len=args.max_seq_length, no_context=args.no_context,
+                                         seq_start=args.seq_start)
+    vectorize_config = LoaderConfig(batch_size=args.eval_batch_size)
+    eval_dataloader, eval_data = read_preprocess_load(os.path.join(data_dir, "test.json"),
+                                                      preprocess_config, vectorize_config)
 
     logger.info("***** Running evaluation *****")
-    logger.info("  Num examples = %d", len(eval_examples))
+    logger.info("  Num examples = %d", len(eval_data.sentences))
     logger.info("  Batch size = %d", args.eval_batch_size)
-    all_input_ids = torch.tensor([f.input_ids for f in eval_features], dtype=torch.long)
-    all_segment_ids = torch.tensor([f.segment_ids for f in eval_features], dtype=torch.long)
-    all_input_mask = torch.tensor([f.input_mask for f in eval_features], dtype=torch.long)
-    all_label_ids = torch.tensor([f.label_id for f in eval_features], dtype=torch.long)
-    eval_data = TensorDataset(all_input_ids, all_segment_ids, all_input_mask, all_label_ids)
-    # Run prediction for full data
-    eval_sampler = SequentialSampler(eval_data)
-    eval_dataloader = DataLoader(eval_data, sampler=eval_sampler, batch_size=args.eval_batch_size)
 
     if model is None:
         _model = torch.load(os.path.join(model_dir, "model.pt"))
@@ -243,33 +222,45 @@ def test(args, dev_as_test=None, output_dir=None, model=None, model_dir=None):  
     else:
         _model = model
 
-    full_logits = []
-    full_label_ids = []
-    for step, batch in enumerate(eval_dataloader):
-        batch = tuple(t.to(device) for t in batch)
-        input_ids, segment_ids, input_mask, label_ids = batch
+    probs = np.array(predict(_model, eval_dataloader, device))
+    preds = np.argmax(probs, axis=-1)
 
-        with torch.no_grad():
-            logits = _model(input_ids, segment_ids, input_mask)
+    pr_ensemble, pr_test_first = get_predictions(preds, eval_data.sentences, eval_data.sentence_numbers)
+    prob_ensemble, prob_test_first = get_predictions2(probs, eval_data.sentences, eval_data.sentence_numbers)
 
-        logits = logits.detach().cpu().numpy()
-        label_ids = label_ids.cpu().numpy()
+    ens = [pr_ensemble, prob_ensemble, pr_test_first, prob_test_first]
+    method_names = ['CMV', 'CMVP', 'F', 'FP']
+    for ensem, method_name in zip(ens, method_names):
+        output_eval_json = os.path.join(output_dir, "predictions_{}.json".format(method_name))
+        write_result(output_eval_json, eval_data.orig_sentences, eval_data.lengths,
+                     eval_data.sentences, eval_data.labels, ensem)
 
-        full_logits.extend(logits.tolist())
-        full_label_ids.extend(label_ids.tolist())
+    if args.sentence_in_context:
+        seq_len = args.max_seq_length
+        tag_map = {l: i for i, l in enumerate(get_labels())}
+        starting_pos = np.arange(0, seq_len, 32)
+        #starting_pos[0] = 1
+        for start_p in starting_pos:
+            tt_lines, tt_tags, line_nos, line_starts = combine_sentences2(eval_data.sentences, eval_data.labels,
+                                                                          seq_len - 1, start_p)
 
-    output_eval_json = os.path.join(output_dir, "predictions.json")
-    with open(output_eval_json, "w") as fw:
-        assert len(full_logits) == len(eval_examples)
-        # sort by original order for evaluation
-        recs = {}
-        for qx, ex in enumerate(eval_examples):
-            recs[int(ex.guid.split("-")[1])] = {"sentence": ex.text_a, "idx_map": ex.idx_map,
-                                                "logit": full_logits[qx][1:]}  # skip the [CLS] tag.
-        full_logits = [recs[qx]["logit"] for qx in range(len(full_logits))]
-        raw_X = [recs[qx]["sentence"] for qx in range(len(eval_examples))]
-        idx_map = [recs[qx]["idx_map"] for qx in range(len(eval_examples))]
-        json.dump({"logits": full_logits, "raw_X": raw_X, "idx_map": idx_map}, fw)
+            input_ids, segment_ids, masks, label_ids = convert_to_features(tt_lines, tt_tags, tag_map, tokenizer,
+                                                                           seq_len)
+            data_loader = to_data_loader(input_ids, segment_ids, masks, label_ids, batch_size=args.eval_batch_size)
+            probs = np.array(predict(_model, data_loader, device))
+            preds = np.argmax(probs, axis=-1).tolist()
+
+            pred_tags = []
+            for i, pred in enumerate(preds):
+                idx = line_nos[i].index(i)
+                pred_tags.append([t for t in
+                                  pred[line_starts[i][idx] + 1 :line_starts[i][idx] + 1 + len(eval_data.sentences[i])]])
+
+            output_eval_json = os.path.join(output_dir, "predictions_start_position_{}.json".format(start_p))
+            write_result(output_eval_json, eval_data.orig_sentences, eval_data.lengths,
+                         eval_data.sentences, eval_data.labels, pred_tags)
+
+    print("##############")
 
 
 def main():
@@ -308,6 +299,18 @@ def main():
                         default=False,
                         action='store_true',
                         help="Whether to save model after training.")
+    parser.add_argument("--no_context",
+                        default=False,
+                        action='store_true',
+                        help="Whether we're training a sentence-crossed model.")
+    parser.add_argument("--sentence_in_context",
+                        default=False,
+                        action='store_true',
+                        help="Whether we're test with a sentence_in_context data")
+    parser.add_argument("--seq_start",
+                        default=0,
+                        type=int,
+                        help="Window Bert start position for processing context data")
     parser.add_argument("--train_batch_size",
                         default=32,
                         type=int,
@@ -363,4 +366,6 @@ def main():
 
 
 if __name__ == "__main__":
+    start_time = time.time()
     main()
+    print("--- %s total seconds ---" % (time.time() - start_time))
