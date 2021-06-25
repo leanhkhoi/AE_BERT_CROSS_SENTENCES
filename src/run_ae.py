@@ -23,12 +23,11 @@ import numpy as np
 import torch.nn as nn
 import torch
 from torch.utils.data import RandomSampler, SequentialSampler
-from transformers import BertPreTrainedModel, BertModel, \
-    BertLayer as OfficialBertLayer, AdamW, get_linear_schedule_with_warmup
+from transformers import BertPreTrainedModel, BertModel, BertTokenizer, BertLayer, AdamW, \
+    get_linear_schedule_with_warmup
 from common import get_labels, get_predictions, \
     get_predictions2, write_result, PreprocessConfig, combine_sentences2, predict, \
     read_preprocess_load, LoaderConfig, convert_to_features, to_data_loader
-from absa_data_utils import ABSATokenizer
 import modelconfig
 from torchcrf import CRF
 
@@ -44,6 +43,22 @@ def warmup_linear(x, warmup=0.002):
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
+class ABSATokenizer(BertTokenizer):
+    def subword_tokenize(self, tokens, labels):  # for AE
+        split_tokens, split_labels = [], []
+        idx_map = []
+        for ix, token in enumerate(tokens):
+            sub_tokens = self.wordpiece_tokenizer.tokenize(token)
+            for jx, sub_token in enumerate(sub_tokens):
+                split_tokens.append(sub_token)
+                if labels[ix] == "B" and jx > 0:
+                    split_labels.append("I")
+                else:
+                    split_labels.append(labels[ix])
+                idx_map.append(ix)
+        return split_tokens, split_labels, idx_map
+
+
 class GRoIE(nn.Module):
     def __init__(self, count, config, num_labels):
         super(GRoIE, self).__init__()
@@ -54,7 +69,7 @@ class GRoIE(nn.Module):
         self.classifier = torch.nn.Linear(config.hidden_size, num_labels)
         self.dropout = torch.nn.Dropout(config.hidden_dropout_prob)
         for i in range(count):
-            self.pre_layers.append(OfficialBertLayer(config))
+            self.pre_layers.append(BertLayer(config))
             self.crf_layers.append(CRF(num_labels))
 
     def forward(self, layers, attention_mask, labels):
@@ -239,7 +254,7 @@ def test(args, dev_as_test=None, output_dir=None, model=None,
         seq_len = args.max_seq_length
         tag_map = {l: i for i, l in enumerate(get_labels())}
         starting_pos = np.arange(0, seq_len, 32)
-        #starting_pos[0] = 1
+        # starting_pos[0] = 1
         for start_p in starting_pos:
             tt_lines, tt_tags, line_nos, line_starts = combine_sentences2(eval_data.sentences, eval_data.labels,
                                                                           seq_len - 1, start_p)
@@ -254,7 +269,7 @@ def test(args, dev_as_test=None, output_dir=None, model=None,
             for i, pred in enumerate(preds):
                 idx = line_nos[i].index(i)
                 pred_tags.append([t for t in
-                                  pred[line_starts[i][idx] + 1 :line_starts[i][idx] + 1 + len(eval_data.sentences[i])]])
+                                  pred[line_starts[i][idx] + 1:line_starts[i][idx] + 1 + len(eval_data.sentences[i])]])
 
             output_eval_json = os.path.join(output_dir, "predictions_start_position_{}.json".format(start_p))
             write_result(output_eval_json, eval_data.orig_sentences, eval_data.lengths,
