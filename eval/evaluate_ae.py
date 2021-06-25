@@ -156,6 +156,7 @@ def evaluate(pred_fn, command, template):
         command=command.split()
         label_laptop_xml(template, command[4], pred_json["raw_X"], y_pred)
         acc=check_output(command ).split()
+        return float(acc[15])
 
 def evaluate2(pred_fn, command, template):
     with open(pred_fn) as f:
@@ -187,7 +188,7 @@ if __name__ == "__main__":
         command="java -cp eval/eval.jar Main.Aspects ae/official_data/laptop_pred.xml ae/official_data/Laptops_Test_Gold.xml"
         template="ae/official_data/Laptops_Test_Data_PhaseA.xml"
 
-    print("Accuracy without context-aware in original code : {} \n".format(evaluate("debug\\pt_ae\\laptop\\1\\predictions.json", command, template)))
+    print("Accuracy without context-aware in original code : {} \n".format(evaluate("debug\\pt_ae\\laptop_old\\1\\predictions.json", command, template)))
 
     print("------------------Accuracy without context-aware------------")
     method_names = ['CMV', 'CMVP', 'F', 'FP']
