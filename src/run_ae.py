@@ -59,6 +59,37 @@ class ABSATokenizer(BertTokenizer):
         return split_tokens, split_labels, idx_map
 
 
+class HSUM(nn.Module):
+    def __init__(self, count, config, num_labels):
+        super(HSUM, self).__init__()
+        self.count = count
+        self.num_labels = num_labels
+        self.pre_layers = torch.nn.ModuleList()
+        self.crf_layers = torch.nn.ModuleList()
+        self.classifier = torch.nn.Linear(config.hidden_size, num_labels)
+        for i in range(count):
+            self.pre_layers.append(BertLayer(config))
+            self.crf_layers.append(CRF(num_labels))
+
+    def forward(self, layers, attention_mask, labels):
+        losses = []
+        logitses = []
+        output = torch.zeros_like(layers[0])
+        total_loss = torch.Tensor(0)
+        for i in range(self.count):
+            output = output + layers[-i - 1]
+            output = self.pre_layers[i](output, attention_mask)
+            logits = self.classifier(output)
+            if labels is not None:
+                loss = self.crf_layers[i](logits.view(100, -1, self.num_labels), labels.view(100, -1))
+                losses.append(loss)
+            logitses.append(logits)
+        if labels is not None:
+            total_loss = torch.sum(torch.stack(losses), dim=0)
+        avg_logits = torch.sum(torch.stack(logitses), dim=0) / self.count
+        return -total_loss, avg_logits
+
+
 class GRoIE(nn.Module):
     def __init__(self, count, config, num_labels):
         super(GRoIE, self).__init__()
@@ -80,7 +111,7 @@ class GRoIE(nn.Module):
             layer = self.dropout(layer)
             logits = self.classifier(layer)
             if labels is not None:
-                loss = self.crf_layers[i](logits.view(128, -1, self.num_labels), labels.view(128, -1))
+                loss = self.crf_layers[i](logits.view(100, -1, self.num_labels), labels.view(100, -1))
                 losses.append(loss)
             logitses.append(logits)
         if labels is not None:
@@ -92,11 +123,11 @@ class GRoIE(nn.Module):
 
 
 class BertForAE(BertPreTrainedModel):
-    def __init__(self, config, num_labels=3):
+    def __init__(self, config, num_labels=3, method_name='P-SUM'):
         super(BertForAE, self).__init__(config)
         self.num_labels = num_labels
         self.bert = BertModel(config)
-        self.groie = GRoIE(4, config, num_labels)
+        self.groie = GRoIE(4, config, num_labels) if method_name== 'P-SUM' else HSUM(4, config, num_labels)
         self.init_weights()
 
     def forward(self, input_ids, token_type_ids=None, attention_mask=None, labels=None):
@@ -179,6 +210,7 @@ def train(args):
             global_step += 1
             # >>>> perform validation at the end of each epoch.
         print("training loss: ", loss.item(), epoch + 1)
+        logger.info("training loss: %f, epoch: %d", loss.item(), epoch + 1)
         new_dirs = os.path.join(args.output_dir, str(epoch + 1))
         os.mkdir(new_dirs)
         if args.no_valid is False:
@@ -243,8 +275,13 @@ def test(args, dev_as_test=None, output_dir=None, model=None,
     pr_ensemble, pr_test_first = get_predictions(preds, eval_data.sentences, eval_data.sentence_numbers)
     prob_ensemble, prob_test_first = get_predictions2(probs, eval_data.sentences, eval_data.sentence_numbers)
 
-    ens = [pr_ensemble, prob_ensemble, pr_test_first, prob_test_first]
-    method_names = ['CMV', 'CMVP', 'F', 'FP']
+    if args.no_context:
+        ens = [pr_test_first]
+        method_names = ['NC']
+    else:
+        ens = [pr_ensemble, prob_ensemble, pr_test_first, prob_test_first]
+        method_names = ['CMV', 'CMVP', 'F', 'FP']
+
     for ensem, method_name in zip(ens, method_names):
         output_eval_json = os.path.join(output_dir, "predictions_{}.json".format(method_name))
         write_result(output_eval_json, eval_data.orig_sentences, eval_data.lengths,
