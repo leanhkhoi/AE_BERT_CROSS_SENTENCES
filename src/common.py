@@ -23,11 +23,12 @@ def read(inpput_file):
 
 class PreprocessConfig(object):
 
-    def __init__(self, tokenizer, seq_len, no_context=False, seq_start=0):
+    def __init__(self, tokenizer, seq_len=100, no_context=False, seq_start=0, combine_strategy='sequential'):
         self.tokenizer = tokenizer
         self.seq_len = seq_len
         self.no_context = no_context
         self.seq_start = seq_start
+        self.combine_strategy = combine_strategy
 
 
 class LoaderConfig(object):
@@ -37,8 +38,8 @@ class LoaderConfig(object):
         self.sampler = sampler
 
 
-def read_process(input_location, config: PreprocessConfig):
-    lines = read(input_location)
+def read_process(data_dir, mode, config: PreprocessConfig):
+    lines = read(os.path.join(data_dir, mode + ".json"))
     orig_sentences = []
     orig_labels = []
     for (i, ids) in enumerate(lines):
@@ -47,10 +48,13 @@ def read_process(input_location, config: PreprocessConfig):
 
     if config.no_context:
         return process_no_context(orig_sentences, orig_labels, config.tokenizer, config.seq_len)
-    else:
+    elif config.combine_strategy == 'sequential':
         return process_sentences(orig_sentences, orig_labels, config.tokenizer, config.seq_len,
                                  config.seq_start)
-
+    else:
+        similarity_matrix = read(os.path.join(data_dir, mode + "-similarity.json"))['matrix']
+        return process_sentences_with_similarity(orig_sentences, orig_labels, config.tokenizer, config.seq_len,
+                                 config.seq_start, similarity_matrix)
 
 # def convert_to_bert_features(sentences, labels, tag_map, tokenizer, seq_len):
 #     tids = []
@@ -112,7 +116,23 @@ def convert_to_features(sentences, labels, tag_map, tokenizer, seq_len):
     return tids, sids, masks, lids
 
 
-def process_sentences(orig_sentences, orig_labels, tokenizer, max_seq_len, seq_start=0):
+def process_sentences_with_similarity(orig_sentences, orig_labels, tokenizer, max_seq_len, seq_start,
+                                      similarity_matrix):
+    # Tokenize words, split sentences to max_seq_len, and keep length
+    # of each source word in tokens
+    sentences, labels, lengths = tokenize_and_split_sentences(
+        orig_sentences, orig_labels, tokenizer, max_seq_len)
+
+    # Extend each sentence to include context sentences
+    combined_sentences, combined_labels, sentence_numbers, sentence_starts = combine_sentences3(
+        sentences, labels, max_seq_len - 1, seq_start, similarity_matrix)
+
+    return Sentences(
+        orig_sentences, sentences, labels, lengths, combined_sentences, combined_labels, sentence_numbers,
+        sentence_starts)
+
+
+def process_sentences(orig_sentences, orig_labels, tokenizer, max_seq_len, seq_start):
     # Tokenize words, split sentences to max_seq_len, and keep length
     # of each source word in tokens
     sentences, labels, lengths = tokenize_and_split_sentences(
@@ -265,6 +285,89 @@ def combine_sentences2(lines, tags, max_seq, start=0):
     return new_lines, new_tags, lines_in_sample, linestarts_in_sample
 
 
+def combine_sentences3(lines, tags, max_seq, start=0, similarity_matrix=None, skips=10):
+    lines_in_sample = []
+    linestarts_in_sample = []
+    new_lines = []
+    new_tags = []
+    position = start
+
+    for i, line in enumerate(lines):
+        line_starts = []
+        line_numbers = []
+        if max_seq >= start + (len(line) + 1):  # 1 corresponding to [SEP] word
+            new_line = [0] * start
+            new_tag = [0] * start
+            new_line.extend(line)
+            new_tag.extend(tags[i])
+            line_starts.append(start)
+            line_numbers.append(i)
+        else:
+            position = max_seq - (len(line) + 1)  # 1 corresponding to [SEP] word
+            new_line = [0] * position
+            new_tag = [0] * position
+            new_line.extend(line)
+            new_tag.extend(tags[i])
+            line_starts.append(position)
+            line_numbers.append(i)
+        j = skips
+        next_idx = similarity_matrix[i][j]
+        ready = False
+        while not ready:
+            if max_seq >= (len(lines[next_idx]) + 1) + (len(new_line) + 1):  # 1 corresponding to [SEP] word
+                new_line.append('[SEP]')
+                new_tag.append('O')
+                position = len(new_line)
+                new_line.extend(lines[next_idx])
+                new_tag.extend(tags[next_idx])
+                line_starts.append(position)
+                line_numbers.append(next_idx)
+                j += 1
+                next_idx = similarity_matrix[i][j]
+            else:
+                new_line.append('[SEP]')
+                new_tag.append('O')
+                position = len(new_line)
+                new_line.extend(lines[next_idx][0:(max_seq - position)])
+                new_tag.extend(tags[next_idx][0:(max_seq - position)])
+                ready = True
+
+        # lines_in_sample.append(line_numbers)
+
+        j += 1
+        next_idx = similarity_matrix[i][j]
+        ready = False
+        while not ready:
+            counter = line_starts[0]
+            # print(counter)
+            prev_line = lines[next_idx][:]
+            prev_tags = tags[next_idx][:]
+            prev_line.append('[SEP]')
+            prev_tags.append('O')
+            # print(len(prev_line), len(prev_tags))
+            if len(prev_line) <= counter:
+                new_line[(counter - len(prev_line)):counter] = prev_line
+                new_tag[(counter - len(prev_line)):counter] = prev_tags
+                line_starts.insert(0, counter - len(prev_line))
+                line_numbers.insert(0, next_idx)  # negative numbers are indices to end of lines array
+                j += 1
+                next_idx = similarity_matrix[i][j]
+            else:
+                if counter > 2:
+                    new_line[0:counter] = prev_line[-counter:]
+                    new_tag[0:counter] = prev_tags[-counter:]
+                    ready = True
+                else:
+                    new_line[0:counter] = ['[PAD]'] * counter
+                    new_tag[0:counter] = ['O'] * counter
+                    ready = True
+        new_lines.append(new_line)
+        new_tags.append(new_tag)
+        lines_in_sample.append(line_numbers)
+        linestarts_in_sample.append(line_starts)
+    return new_lines, new_tags, lines_in_sample, linestarts_in_sample
+
+
 def get_predictions(predicted, sentences, combined_sentence_traces):
     first_pred = []
     final_pred = []
@@ -338,8 +441,8 @@ def write_result(fname, orig_sentences, lengths,
     return lines, sentences
 
 
-def read_preprocess_load(input_location, preprocess_config: PreprocessConfig, loader_config: LoaderConfig):
-    preprocessed_data = read_process(input_location, preprocess_config)
+def read_preprocess_load(data_dir, mode, preprocess_config: PreprocessConfig, loader_config: LoaderConfig):
+    preprocessed_data = read_process(data_dir, mode, preprocess_config)
 
     combined_sentences = preprocessed_data.combined_sentences
     combined_labels = preprocessed_data.combined_labels

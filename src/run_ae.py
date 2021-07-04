@@ -148,9 +148,9 @@ def train(args):
     tokenizer = ABSATokenizer.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.bert_model], do_basic_tokenize=False)
 
     preprocess_config = PreprocessConfig(tokenizer, seq_len=args.max_seq_length, no_context=args.no_context,
-                                         seq_start=args.seq_start)
+                                         seq_start=args.seq_start, combine_strategy=args.combine_strategy)
     vectorize_config = LoaderConfig(batch_size=args.train_batch_size, sampler=RandomSampler)
-    train_dataloader, train_data = read_preprocess_load(os.path.join(args.data_dir, "train.json"),
+    train_dataloader, train_data = read_preprocess_load(args.data_dir, "train",
                                                         preprocess_config, vectorize_config)
 
     num_train_steps = int(len(train_data.sentences) / args.train_batch_size) * args.num_train_epochs
@@ -163,7 +163,7 @@ def train(args):
     # >>>>> validation
     if args.no_valid is False:
         vectorize_config = LoaderConfig(batch_size=args.train_batch_size, sampler=SequentialSampler)
-        valid_dataloader, valid_data = read_preprocess_load(os.path.join(args.data_dir, "dev.json"),
+        valid_dataloader, valid_data = read_preprocess_load(args.data_dir, "dev",
                                                             preprocess_config, vectorize_config)
         logger.info("***** Running validations *****")
         logger.info("  Num orig examples = %d", len(valid_data.sentences))
@@ -253,10 +253,10 @@ def test(args, dev_as_test=None, output_dir=None, model=None,
         data_dir = args.data_dir
 
     preprocess_config = PreprocessConfig(tokenizer, seq_len=args.max_seq_length, no_context=args.no_context,
-                                         seq_start=args.seq_start)
-    vectorize_config = LoaderConfig(batch_size=args.eval_batch_size)
-    eval_dataloader, eval_data = read_preprocess_load(os.path.join(data_dir, "test.json"),
-                                                      preprocess_config, vectorize_config)
+                                         combine_strategy=args.combine_strategy)
+    loader_config = LoaderConfig(batch_size=args.eval_batch_size)
+    eval_dataloader, eval_data = read_preprocess_load(data_dir, "test",
+                                                      preprocess_config, loader_config)
 
     logger.info("***** Running evaluation *****")
     logger.info("  Num examples = %d", len(eval_data.sentences))
@@ -287,7 +287,8 @@ def test(args, dev_as_test=None, output_dir=None, model=None,
         write_result(output_eval_json, eval_data.orig_sentences, eval_data.lengths,
                      eval_data.sentences, eval_data.labels, ensem)
 
-    if args.sentence_in_context:
+    #test with sentence in context
+    if args.no_context is False:
         seq_len = args.max_seq_length
         tag_map = {l: i for i, l in enumerate(get_labels())}
         starting_pos = np.arange(0, seq_len, 32)
@@ -334,7 +335,7 @@ def main():
 
     ## Other parameters
     parser.add_argument("--max_seq_length",
-                        default=128,
+                        default=100,
                         type=int,
                         help="The maximum total input sequence length after WordPiece tokenization. \n"
                              "Sequences longer than this will be truncated, and sequences shorter \n"
@@ -355,16 +356,16 @@ def main():
                         default=False,
                         action='store_true',
                         help="Whether we're training a sentence-crossed model.")
-    parser.add_argument("--sentence_in_context",
-                        default=False,
-                        action='store_true',
-                        help="Whether we're test with a sentence_in_context data")
+    parser.add_argument("--combine_strategy",
+                        default="sequential",
+                        type=str,
+                        help="Whether we're training a sentence-crossed using combination strategy model.")
     parser.add_argument("--seq_start",
                         default=0,
                         type=int,
                         help="Window Bert start position for processing context data")
     parser.add_argument("--train_batch_size",
-                        default=32,
+                        default=16,
                         type=int,
                         help="Total batch size for training.")
     parser.add_argument("--eval_batch_size",
@@ -377,7 +378,7 @@ def main():
                         help="The initial learning rate for Adam.")
 
     parser.add_argument("--num_train_epochs",
-                        default=6,
+                        default=4,
                         type=int,
                         help="Total number of training epochs to perform.")
     parser.add_argument("--warmup_proportion",
