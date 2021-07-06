@@ -78,7 +78,7 @@ class HSUM(nn.Module):
         total_loss = torch.Tensor(0)
         for i in range(self.count):
             output = output + layers[-i - 1]
-            output = self.pre_layers[i](output, attention_mask)
+            output = self.pre_layers[i](output, attention_mask)[0]
             logits = self.classifier(output)
             if labels is not None:
                 loss = self.crf_layers[i](logits.view(100, -1, self.num_labels), labels.view(100, -1))
@@ -123,11 +123,11 @@ class GRoIE(nn.Module):
 
 
 class BertForAE(BertPreTrainedModel):
-    def __init__(self, config, num_labels=3, method_name='P-SUM'):
+    def __init__(self, config, num_labels=3, model_name='P-SUM'):
         super(BertForAE, self).__init__(config)
         self.num_labels = num_labels
         self.bert = BertModel(config)
-        self.groie = GRoIE(4, config, num_labels) if method_name== 'P-SUM' else HSUM(4, config, num_labels)
+        self.groie = GRoIE(4, config, num_labels) if model_name== 'P-SUM' else HSUM(4, config, num_labels)
         self.init_weights()
 
     def forward(self, input_ids, token_type_ids=None, attention_mask=None, labels=None):
@@ -173,7 +173,8 @@ def train(args):
         valid_losses = []
     # <<<<< end of validation declaration
 
-    model = BertForAE.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.bert_model], num_labels=len(label_list))
+    model = BertForAE.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.bert_model], num_labels=len(label_list),
+                                      model_name='P-SUM')
     model.to(device)
     # Prepare optimizer
     param_optimizer = [(k, v) for k, v in model.named_parameters() if v.requires_grad == True]

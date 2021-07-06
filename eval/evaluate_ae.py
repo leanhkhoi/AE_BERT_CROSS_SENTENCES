@@ -190,46 +190,38 @@ def evaluate2(pred_fn, command, template):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--pred_json', type=str)
+    parser.add_argument('--domain', type=str)
     parser.add_argument('--runs', type=int)
+    parser.add_argument('--no_context', default=False, action='store_true',
+                        help="Whether to run validation.")
 
     args = parser.parse_args()
-    if 'rest' in args.pred_json:
+    domain = args.domain
+    if 'rest' == args.domain:
         command = "java -cp eval/A.jar absa16.Do Eval -prd ae/official_data/rest_pred.xml -gld ae/official_data/EN_REST_SB1_TEST.xml.gold -evs 2 -phs A -sbt SB1"
         template = "ae/official_data/EN_REST_SB1_TEST.xml.A"
-    elif 'laptop' in args.pred_json:
+    elif 'laptop' == args.domain:
         command = "java -cp eval/eval.jar Main.Aspects ae/official_data/laptop_pred.xml ae/official_data/Laptops_Test_Gold.xml"
         template = "ae/official_data/Laptops_Test_Data_PhaseA.xml"
 
-    print("------------------Accuracy without context-aware------------")
-    acc = 0
-    for i in range(args.runs):
-        acc += evaluate(f"run\\pt_ae\\laptop_old\\{i + 1}\\predictions.json", command,
-                         template)
-    print(f"Accuracy with non-context in {args.runs} runs : {acc / args.runs}")
+    #dir = f"run_history\\pt_ae\\{domain}\\9_runs_4_epoch_0_seq_start_100_window"
+    dir = f"run\\\pt_ae\\{domain}"
 
-    # print("----------------Accuracy with context-aware---------------")
-    # method_names = ['CMV', 'CMVP', 'F', 'FP', "start_position_0", "start_position_32", "start_position_64",
-    #                 "start_position_96"]
-    # for i, method_name in enumerate(method_names):
-    #     acc = 0
-    #     for i in range(args.runs):
-    #         acc += evaluate2(f"run\\pt_ae\\laptop_with_context\\{i + 1}\\predictions_{method_name}.json", command,
-    #                          template)
-    #     print(f"Accuracy with {method_name} in {args.runs} runs: {acc / args.runs}")
-
-    # print("----------------Accuracy with context-aware---------------")
-    # args.runs = 4
-    # method_names = ['CMV', 'CMVP', 'F', 'FP', "start_position_0", "start_position_32", "start_position_64",
-    #                 "start_position_96"]
-    # for i, method_name in enumerate(method_names):
-    #     for i in range(args.runs):
-    #         acc = evaluate2(f"run\\pt_ae\\laptop_with_context\\{i + 1}\\predictions_{method_name}.json", command,
-    #                          template)
-    #         print(f"Accuracy with {method_name} in runs {i+1}: {acc}")
-
-    # print("------------------Accuracy without context-aware------------")
-    # for i in range(args.runs):
-    #     acc = evaluate2(f"run\\pt_ae\\laptop_without_context\\{i + 1}\\predictions_NC.json", command,
-    #                    template)
-    #     print(f"Accuracy with in runs {args.runs}: {acc}")
+    if args.no_context:
+        print("\n----------------Accuracy without sentence-in-context---------------")
+        acc = 0
+        for i in range(args.runs):
+            acc += evaluate2(f"{dir}\\{i + 1}\\predictions_NC.json", command,
+                             template)
+        print(f"Accuracy in {args.runs} runs: {acc / args.runs}")
+    else:
+        print("\n----------------Accuracy with sentence-in-context---------------")
+        method_names = ['CMV', 'CMVP', 'F', 'FP', "start_position_0", "start_position_32", "start_position_64",
+                        "start_position_96"]
+        for i, method_name in enumerate(method_names):
+            acc = 0
+            for i in range(args.runs):
+                acc += evaluate2(f"{dir}\\{i + 1}\\predictions_{method_name}.json", command,
+                                 template)
+                # print(f"Accuracy with {method_name} in runs {i + 1}: {acc}")
+            print(f"Accuracy with {method_name} in {args.runs} runs: {acc / args.runs}")
