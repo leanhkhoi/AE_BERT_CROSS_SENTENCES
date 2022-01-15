@@ -1,0 +1,22 @@
+{
+  "0": {
+    "sentence": ["Boot", "time", "is", "super", "fast", ",", "around", "anywhere", "from", "35", "seconds", "to", "1", "minute", "."],
+    "label": ["B", "I", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]
+  },
+  "1": {
+    "sentence": ["tech", "support", "would", "not", "fix", "the", "problem", "unless", "I", "bought", "your", "plan", "for", "$", "150", "plus", "."],
+    "label": ["B", "I", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"]
+  },
+  "2": {
+    "sentence": ["but", "in", "resume", "this", "computer", "rocks", "!"],
+    "label": ["O", "O", "O", "O", "O", "O", "O"]
+  },
+  "3": {
+    "sentence": ["Set", "up", "was", "easy", "."],
+    "label": ["B", "I", "O", "O", "O"]
+  },
+  "4": {
+    "sentence": ["Did", "not", "enjoy", "the", "new", "Windows", "8", "and", "touchscreen", "functions", "."],
+    "label": ["O", "O", "O", "O", "O", "B", "I", "O", "B", "I", "O"]
+  }
+}

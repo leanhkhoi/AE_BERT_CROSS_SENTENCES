@@ -60,7 +60,7 @@
             <Opinions><Opinion target="breakfast food" from="10" to="24" /></Opinions></sentence>
             <sentence id="en_SchoonerOrLater_477965849:2">
                 <text>This is a great place to get a delicious meal.</text>
-            <Opinions><Opinion target="place" from="16" to="21" /><Opinion target="meal" from="41" to="45" /></Opinions></sentence>
+            <Opinions><Opinion target="meal" from="41" to="45" /></Opinions></sentence>
             <sentence id="en_SchoonerOrLater_477965849:3">
                 <text>We never had to wait more than 5 minutes.</text>
             <Opinions /></sentence>
@@ -107,13 +107,13 @@
             <Opinions /></sentence>
             <sentence id="en_ParkChaletGardenRestaurant_477778282:2">
                 <text>Everyone that sat in the back outside agreed that it was the worst service we had ever received.</text>
-            <Opinions /></sentence>
+            <Opinions><Opinion target="service" from="67" to="74" /></Opinions></sentence>
             <sentence id="en_ParkChaletGardenRestaurant_477778282:3">
                 <text>Our waiter was non-existent and after our food finally arrived over an hour after we ordered, we were not given any water or utensils.</text>
             <Opinions><Opinion target="waiter" from="4" to="10" /></Opinions></sentence>
             <sentence id="en_ParkChaletGardenRestaurant_477778282:4">
                 <text>I complained to the manager, but he was not even apologetic.</text>
-            <Opinions><Opinion target="manager" from="20" to="27" /></Opinions></sentence>
+            <Opinions /></sentence>
             <sentence id="en_ParkChaletGardenRestaurant_477778282:5">
                 <text>I will never return again.</text>
             <Opinions /></sentence>
@@ -192,13 +192,13 @@
             <Opinions><Opinion target="meal" from="10" to="14" /></Opinions></sentence>
             <sentence id="en_Sage_480875505:1">
                 <text>&#8211; In a age of incremental cost cutting in restaurants, its nice to see a place that bucks that trend, and just plain delivers high quality food and good service, period.</text>
-            <Opinions><Opinion target="place" from="73" to="78" /><Opinion target="food" from="139" to="143" /><Opinion target="service" from="153" to="160" /></Opinions></sentence>
+            <Opinions><Opinion target="food" from="139" to="143" /><Opinion target="service" from="153" to="160" /></Opinions></sentence>
             <sentence id="en_Sage_480875505:2">
                 <text>This is the place to relax and enjoy the finest quality food the industry can offer.</text>
             <Opinions><Opinion target="place" from="12" to="17" /><Opinion target="food" from="56" to="60" /></Opinions></sentence>
             <sentence id="en_Sage_480875505:3">
                 <text>Caution - its real food for people who love the best.</text>
-            <Opinions><Opinion target="food" from="19" to="23" /></Opinions></sentence>
+            <Opinions /></sentence>
             <sentence id="en_Sage_480875505:4" OutOfScope="TRUE">
                 <text>Some of the food is clearly oriented toward foodies (like me) so if your not a foodie (nothing wrong with that)- head over to McDonalds or some Ruby Tuesday and have at it!</text>
             <Opinions><Opinion target="food" from="12" to="16" /></Opinions></sentence>
@@ -251,10 +251,10 @@
             <Opinions><Opinion target="service" from="4" to="11" /></Opinions></sentence>
             <sentence id="en_BlueRibbonSushi_478219453:5">
                 <text>On a recent trip, our waiter was extremely dismissive, while no less than three staff members waited hand-and-foot on a pair of Japanese girls seated nearby.</text>
-            <Opinions><Opinion target="waiter" from="22" to="28" /><Opinion target="staff" from="80" to="85" /></Opinions></sentence>
+            <Opinions><Opinion target="waiter" from="22" to="28" /><Opinion target="staff members" from="80" to="93" /></Opinions></sentence>
             <sentence id="en_BlueRibbonSushi_478219453:6">
                 <text>We were then charged for their most expensive sake ($20+ per serving) when we in fact drank a sake of less than half that price.</text>
-            <Opinions><Opinion target="sake" from="46" to="50" /></Opinions></sentence>
+            <Opinions /></sentence>
             <sentence id="en_BlueRibbonSushi_478219453:7">
                 <text>But Im sure this was just an honest mistake...</text>
             <Opinions /></sentence>
@@ -267,7 +267,7 @@
             <Opinions><Opinion target="sushi" from="9" to="14" /><Opinion target="restaurant" from="30" to="40" /></Opinions></sentence>
             <sentence id="en_BlueRibbonSushi_479929856:1">
                 <text>They pay such detail to everything from miso soup to complex rolls.</text>
-            <Opinions><Opinion target="miso soup" from="40" to="49" /><Opinion target="rolls" from="61" to="66" /></Opinions></sentence>
+            <Opinions><Opinion target="miso soup" from="40" to="49" /><Opinion target="complex rolls" from="53" to="66" /></Opinions></sentence>
             <sentence id="en_BlueRibbonSushi_479929856:2">
                 <text>The sashimi was the freshest and most tender I have ever tasted.</text>
             <Opinions><Opinion target="sashimi" from="4" to="11" /></Opinions></sentence>
@@ -340,13 +340,13 @@
         <sentences>
             <sentence id="en_Patsy'sPizzeria_478231878:0">
                 <text>Mama Mia &#8211; I live in the neighborhood and feel lucky to live by such a great pizza place.</text>
-            <Opinions><Opinion target="Mia" from="5" to="8" /><Opinion target="pizza place" from="77" to="88" /></Opinions></sentence>
+            <Opinions><Opinion target="pizza place" from="77" to="88" /></Opinions></sentence>
             <sentence id="en_Patsy'sPizzeria_478231878:1">
                 <text>the only problem is you really have to warm up the pizza before it's edible, even when you order ahead.</text>
             <Opinions><Opinion target="pizza" from="51" to="56" /></Opinions></sentence>
             <sentence id="en_Patsy'sPizzeria_478231878:2">
                 <text>BUt once done, it's not too much dough, not too much cheese, not too much sauce.</text>
-            <Opinions><Opinion target="sauce" from="74" to="79" /></Opinions></sentence>
+            <Opinions><Opinion target="cheese" from="53" to="59" /></Opinions></sentence>
         </sentences>
     </Review>
     <Review rid="en_BlueRibbonSushi_478218519">
@@ -400,7 +400,7 @@
             <Opinions><Opinion target="draft and bottle selection" from="6" to="32" /><Opinion target="pizza" from="41" to="46" /></Opinions></sentence>
             <sentence id="en_ProfessorThom's_478606540:6">
                 <text>Definitely has one of the best jukebox's i've seen in a long long time.</text>
-            <Opinions><Opinion target="jukebox" from="31" to="38" /></Opinions></sentence>
+            <Opinions /></sentence>
         </sentences>
     </Review>
     <Review rid="en_ProfessorThom's_478606538">
@@ -431,7 +431,7 @@
             <Opinions><Opinion target="upstairs" from="8" to="16" /></Opinions></sentence>
             <sentence id="en_ProfessorThom's_478606538:8">
                 <text>Not alot of smoking places left in New York, but I have found my favorite smoking balconey in the city.</text>
-            <Opinions /></sentence>
+            <Opinions><Opinion target="smoking balconey" from="74" to="90" /></Opinions></sentence>
             <sentence id="en_ProfessorThom's_478606538:9">
                 <text>Kudos to these guys.</text>
             <Opinions /></sentence>
@@ -465,7 +465,7 @@
             <Opinions><Opinion target="decor" from="4" to="9" /></Opinions></sentence>
             <sentence id="en_BlueRibbonSushi_478218520:6">
                 <text>The crowd is mixed yuppies, young and old.</text>
-            <Opinions><Opinion target="crowd" from="4" to="9" /></Opinions></sentence>
+            <Opinions /></sentence>
             <sentence id="en_BlueRibbonSushi_478218520:7">
                 <text>The service was courteous and attentive.</text>
             <Opinions><Opinion target="service" from="4" to="11" /></Opinions></sentence>
@@ -487,7 +487,7 @@
             <Opinions><Opinion target="marinated grapes" from="15" to="31" /><Opinion target="buffalo style chicken wings" from="33" to="60" /><Opinion target="turkey sandwich" from="70" to="85" /></Opinions></sentence>
             <sentence id="en_CatalRestaurant__UvaBar_477861889:4">
                 <text>My g/f and I both agreed the food was very mediocre especially considering the price.</text>
-            <Opinions><Opinion target="food" from="29" to="33" /></Opinions></sentence>
+            <Opinions><Opinion target="/" from="4" to="5" /><Opinion target="food" from="29" to="33" /></Opinions></sentence>
             <sentence id="en_CatalRestaurant__UvaBar_477861889:5">
                 <text>We are locals, and get the feeling the only way this place survives with such average food is because most customers are probably one-time customer tourists.</text>
             <Opinions><Opinion target="place" from="53" to="58" /><Opinion target="food" from="86" to="90" /></Opinions></sentence>
@@ -512,7 +512,7 @@
             <Opinions><Opinion target="food" from="10" to="14" /><Opinion target="ambience" from="21" to="29" /></Opinions></sentence>
             <sentence id="en_CatalRestaurant__UvaBar_477861893:1">
                 <text>&#8211; I loved the pumpkin ravioli and the goat cheese gnocchi (5 big ones to a plate instead of 20 or so little gnocchis) and my sister loved her filet mignon on top of spinach and mashed potatoes.</text>
-            <Opinions><Opinion target="pumpkin ravioli" from="14" to="29" /><Opinion target="goat cheese gnocchi" from="38" to="57" /><Opinion target="filet mignon on top of spinach and mashed potatoes" from="142" to="192" /></Opinions></sentence>
+            <Opinions><Opinion target="pumpkin ravioli" from="14" to="29" /><Opinion target="goat cheese gnocchi" from="38" to="57" /><Opinion target="filet mignon" from="142" to="154" /></Opinions></sentence>
             <sentence id="en_CatalRestaurant__UvaBar_477861893:2">
                 <text>The ambiance was a peaceful and relaxing break amongst all the kids running around in Downtown Disney.</text>
             <Opinions><Opinion target="ambiance" from="4" to="12" /></Opinions></sentence>
@@ -543,14 +543,14 @@
             <Opinions><Opinion target="chana masala (garbanzo beans" from="4" to="32" /></Opinions></sentence>
             <sentence id="en_India'sGrill_477960693:5">
                 <text>It's located in a strip mall near the Beverly Center, not the greatest location, but the food keeps me coming back for more.</text>
-            <Opinions><Opinion target="food" from="89" to="93" /></Opinions></sentence>
+            <Opinions><Opinion target="location" from="71" to="79" /><Opinion target="food" from="89" to="93" /></Opinions></sentence>
         </sentences>
     </Review>
     <Review rid="en_India'sGrill_477960694">
         <sentences>
             <sentence id="en_India'sGrill_477960694:0">
                 <text>hidden little jem</text>
-            <Opinions /></sentence>
+            <Opinions><Opinion target="jem" from="14" to="17" /></Opinions></sentence>
             <sentence id="en_India'sGrill_477960694:1">
                 <text>&#8211; tucked away over by the Beverly Center.</text>
             <Opinions /></sentence>
@@ -559,10 +559,10 @@
             <Opinions><Opinion target="service" from="35" to="42" /></Opinions></sentence>
             <sentence id="en_India'sGrill_477960694:3">
                 <text>I think I have probably tried each item on their menu at least once it is all excellent.</text>
-            <Opinions><Opinion target="menu" from="49" to="53" /></Opinions></sentence>
+            <Opinions /></sentence>
             <sentence id="en_India'sGrill_477960694:4">
                 <text>I can highly recommend their various saag and paneer and korma.</text>
-            <Opinions><Opinion target="saag" from="37" to="41" /><Opinion target="paneer and" from="46" to="56" /><Opinion target="korma" from="57" to="62" /></Opinions></sentence>
+            <Opinions><Opinion target="saag" from="37" to="41" /><Opinion target="paneer" from="46" to="52" /><Opinion target="korma" from="57" to="62" /></Opinions></sentence>
             <sentence id="en_India'sGrill_477960694:5">
                 <text>You routinely see Indian families and friends dining there, which is always a good sign.</text>
             <Opinions /></sentence>
@@ -628,10 +628,10 @@
             <Opinions><Opinion target="restaurant" from="5" to="15" /><Opinion target="decor" from="36" to="41" /><Opinion target="customer service" from="49" to="65" /><Opinion target="manager" from="76" to="83" /></Opinions></sentence>
             <sentence id="en_OpenSesame_477970770:1" OutOfScope="TRUE">
                 <text>&#8211; first of all henrymillionare you dont know a thing about middle eastern food so dont talk.</text>
-            <Opinions><Opinion target="middle" from="59" to="65" /><Opinion target="food" from="74" to="78" /></Opinions></sentence>
+            <Opinions /></sentence>
             <sentence id="en_OpenSesame_477970770:2" OutOfScope="TRUE">
                 <text>Cry me a river, stop complaining you obviously you have no taste in food.</text>
-            <Opinions><Opinion target="food" from="68" to="72" /></Opinions></sentence>
+            <Opinions /></sentence>
             <sentence id="en_OpenSesame_477970770:3">
                 <text>i am never disappointed with there food.</text>
             <Opinions><Opinion target="food" from="35" to="39" /></Opinions></sentence>
@@ -678,7 +678,7 @@
             <Opinions><Opinion target="food" from="4" to="8" /></Opinions></sentence>
             <sentence id="en_OpenSesame_477970938:3">
                 <text>I had the beef kabobs with a side of cucumber yogurt.</text>
-            <Opinions><Opinion target="beef kabobs with" from="10" to="26" /><Opinion target="side of cucumber yogurt" from="29" to="52" /></Opinions></sentence>
+            <Opinions><Opinion target="beef kabobs" from="10" to="21" /><Opinion target="of cucumber yogurt" from="34" to="52" /></Opinions></sentence>
             <sentence id="en_OpenSesame_477970938:4">
                 <text>The presentation of the food was an added bonus, it looked just as great as it tasted!</text>
             <Opinions><Opinion target="food" from="24" to="28" /></Opinions></sentence>
@@ -696,14 +696,14 @@
             <Opinions><Opinion target="staff" from="4" to="9" /><Opinion target="decor" from="31" to="36" /></Opinions></sentence>
             <sentence id="en_OpenSesame_477970938:9">
                 <text>GO TO OPEN SESAME!!!</text>
-            <Opinions><Opinion target="OPEN SESAME" from="6" to="17" /></Opinions></sentence>
+            <Opinions /></sentence>
         </sentences>
     </Review>
     <Review rid="en_OpenSesame_477970940">
         <sentences>
             <sentence id="en_OpenSesame_477970940:0">
                 <text>Holy Hummus!</text>
-            <Opinions><Opinion target="Hummus" from="5" to="11" /></Opinions></sentence>
+            <Opinions /></sentence>
             <sentence id="en_OpenSesame_477970940:1">
                 <text>&#8211; The food is here is incredible, though the quality is inconsistent during lunch.</text>
             <Opinions><Opinion target="food" from="6" to="10" /></Opinions></sentence>
@@ -724,7 +724,7 @@
             <Opinions><Opinion target="seating" from="33" to="40" /><Opinion target="service" from="54" to="61" /></Opinions></sentence>
             <sentence id="en_OpenSesame_477970940:7">
                 <text>There have been several occasions when we've just not gotten some side dishes we've ordered.</text>
-            <Opinions /></sentence>
+            <Opinions><Opinion target="side dishes" from="66" to="77" /></Opinions></sentence>
             <sentence id="en_OpenSesame_477970940:8">
                 <text>However, this place is a gem, and I won't stop going back.</text>
             <Opinions><Opinion target="place" from="14" to="19" /></Opinions></sentence>
@@ -743,7 +743,7 @@
             <Opinions /></sentence>
             <sentence id="en_ParkChaletGardenRestaurant_477778171:3">
                 <text>I swore never to return for a warm beer and mediocre meal.</text>
-            <Opinions><Opinion target="beer" from="35" to="39" /><Opinion target="meal" from="53" to="57" /></Opinions></sentence>
+            <Opinions><Opinion target="meal" from="53" to="57" /></Opinions></sentence>
             <sentence id="en_ParkChaletGardenRestaurant_477778171:4">
                 <text>HOWEVER, one Sunday afternoon my husband and I did go (although with my loud protests) and were pleasantly surprised.</text>
             <Opinions /></sentence>
@@ -777,7 +777,7 @@
             <Opinions><Opinion target="Winelist" from="15" to="23" /></Opinions></sentence>
             <sentence id="en_Ray'sBoathouse_477775917:1">
                 <text>&#8211; Ray's (suprisingly) has the city's BEST &amp; most diverse wine list.</text>
-            <Opinions><Opinion target="Ray's" from="2" to="7" /><Opinion target="wine list" from="57" to="66" /></Opinions></sentence>
+            <Opinions><Opinion target="list" from="62" to="66" /></Opinions></sentence>
             <sentence id="en_Ray'sBoathouse_477775917:2">
                 <text>The sommelier is fantastic, down-to-earth, &amp; extremely knowlegable.</text>
             <Opinions><Opinion target="sommelier" from="4" to="13" /></Opinions></sentence>
@@ -796,16 +796,16 @@
             <Opinions /></sentence>
             <sentence id="en_SchoonerOrLater_477965848:1">
                 <text>&#8211; It is sad to see a place that was once "THE" place to meet and eat for Bfast or Lunch, now be the place that is a big "DONT BOTHER."</text>
-            <Opinions><Opinion target="place" from="21" to="26" /><Opinion target="place" from="100" to="105" /></Opinions></sentence>
+            <Opinions><Opinion target="place" from="21" to="26" /></Opinions></sentence>
             <sentence id="en_SchoonerOrLater_477965848:2">
                 <text>The food is not what it once was (potions have seriously seen downsizing) prices have gone up, and the service is the worst I have experienced anywhere (including mainland Europe).</text>
             <Opinions><Opinion target="food" from="4" to="8" /><Opinion target="potions" from="34" to="41" /><Opinion target="service" from="103" to="110" /></Opinions></sentence>
             <sentence id="en_SchoonerOrLater_477965848:3">
                 <text>What may be interesting to most is the worst sevice/attitude comes from the owners of this establishment.</text>
-            <Opinions><Opinion target="sevice" from="45" to="51" /></Opinions></sentence>
+            <Opinions><Opinion target="sevice" from="45" to="51" /><Opinion target="attitude" from="52" to="60" /><Opinion target="establishment" from="91" to="104" /></Opinions></sentence>
             <sentence id="en_SchoonerOrLater_477965848:4">
                 <text>This establishment really made a marked decline after ( and this is recurring story ) the airing of FOOD TELEVISIONS "DINERS, DRIVE-INS, AND DIVES" hosted by Guy Fieri, in which Schooner or Later was subject of.</text>
-            <Opinions><Opinion target="establishment" from="5" to="18" /><Opinion target="FOOD" from="100" to="104" /></Opinions></sentence>
+            <Opinions><Opinion target="establishment" from="5" to="18" /></Opinions></sentence>
             <sentence id="en_SchoonerOrLater_477965848:5">
                 <text>Perhaps now, Scooner or Later falls into the "Dive" category.</text>
             <Opinions /></sentence>
@@ -824,16 +824,16 @@
         <sentences>
             <sentence id="en_MiopostoCaffe_478542920:0">
                 <text>Open &amp; Cool Place with the Best Pizza and Coffee</text>
-            <Opinions><Opinion target="Place" from="12" to="17" /><Opinion target="Pizza" from="32" to="37" /><Opinion target="Coffee" from="42" to="48" /></Opinions></sentence>
+            <Opinions><Opinion target="Pizza" from="32" to="37" /><Opinion target="Coffee" from="42" to="48" /></Opinions></sentence>
             <sentence id="en_MiopostoCaffe_478542920:1">
                 <text>&#8211; Mioposto has a very creative &amp; delicious pizza menu.</text>
-            <Opinions><Opinion target="Mioposto" from="2" to="10" /><Opinion target="pizza menu" from="43" to="53" /></Opinions></sentence>
+            <Opinions><Opinion target="pizza menu" from="43" to="53" /></Opinions></sentence>
             <sentence id="en_MiopostoCaffe_478542920:2">
                 <text>The coffe is very good, too.</text>
             <Opinions><Opinion target="coffe" from="4" to="9" /></Opinions></sentence>
             <sentence id="en_MiopostoCaffe_478542920:3">
                 <text>Great open and friendly ambience.</text>
-            <Opinions><Opinion target="ambience" from="24" to="32" /></Opinions></sentence>
+            <Opinions><Opinion target="open" from="6" to="10" /><Opinion target="ambience" from="24" to="32" /></Opinions></sentence>
             <sentence id="en_MiopostoCaffe_478542920:4">
                 <text>This place is charming and relaxing.</text>
             <Opinions><Opinion target="place" from="5" to="10" /></Opinions></sentence>
@@ -845,7 +845,7 @@
             <Opinions /></sentence>
             <sentence id="en_MiopostoCaffe_478542920:7">
                 <text>It's a great place to enjoy food and meet friends.</text>
-            <Opinions><Opinion target="place" from="13" to="18" /></Opinions></sentence>
+            <Opinions><Opinion target="place" from="13" to="18" /><Opinion target="food" from="28" to="32" /></Opinions></sentence>
         </sentences>
     </Review>
     <Review rid="en_Ray'sBoathouse_477775916">
@@ -855,7 +855,7 @@
             <Opinions /></sentence>
             <sentence id="en_Ray'sBoathouse_477775916:1">
                 <text>&#8211; After 12 years in Seattle Ray's rates as the place we always go back to.</text>
-            <Opinions><Opinion target="Ray's" from="28" to="33" /></Opinions></sentence>
+            <Opinions /></sentence>
             <sentence id="en_Ray'sBoathouse_477775916:2">
                 <text>Great food, spectacular location, and friendly service keep us coming back year after year.</text>
             <Opinions><Opinion target="food" from="6" to="10" /><Opinion target="location" from="24" to="32" /><Opinion target="service" from="47" to="54" /></Opinions></sentence>
@@ -927,14 +927,14 @@
             <Opinions><Opinion target="Eggs" from="2" to="6" /><Opinion target="pancakes" from="8" to="16" /><Opinion target="potatoes" from="18" to="26" /><Opinion target="fresh fruit" from="28" to="39" /><Opinion target="yogurt" from="44" to="50" /></Opinions></sentence>
             <sentence id="en_SchoonerOrLater_477965689:2">
                 <text>The best place for a leisure Sunday breakfast amidst yachts, then take a stroll through the nearby Farmer's Market.</text>
-            <Opinions><Opinion target="place" from="9" to="14" /><Opinion target="Farmer" from="99" to="105" /></Opinions></sentence>
+            <Opinions /></sentence>
         </sentences>
     </Review>
     <Review rid="en_BlueRibbonSushi_478218333">
         <sentences>
             <sentence id="en_BlueRibbonSushi_478218333:0">
                 <text>great meal &#8211; the fish on the omikase platter was absolutely decadent -- there was none of the stringiness that sometimes accompanies fair sushi -- this fish was perfect!!!!</text>
-            <Opinions><Opinion target="meal" from="6" to="10" /><Opinion target="fish on the omikase platter" from="17" to="44" /><Opinion target="sushi" from="138" to="143" /><Opinion target="fish" from="152" to="156" /></Opinions></sentence>
+            <Opinions><Opinion target="meal" from="6" to="10" /><Opinion target="fish" from="17" to="21" /><Opinion target="omikase" from="29" to="36" /><Opinion target="fish" from="152" to="156" /></Opinions></sentence>
             <sentence id="en_BlueRibbonSushi_478218333:1">
                 <text>plus, i am allergic to rice, and the waitstaff was unbelievably accomodating -- didn't even bat an eye!</text>
             <Opinions><Opinion target="waitstaff" from="37" to="46" /></Opinions></sentence>
@@ -956,7 +956,7 @@
             <Opinions /></sentence>
             <sentence id="en_BlueRibbonSushi_478218340:2" OutOfScope="TRUE">
                 <text>I love sushi, and I have eaten it all over the world.</text>
-            <Opinions><Opinion target="sushi" from="7" to="12" /></Opinions></sentence>
+            <Opinions /></sentence>
             <sentence id="en_BlueRibbonSushi_478218340:3">
                 <text>This is right up there with places in Tokyo as far as the freshness is concerned.</text>
             <Opinions /></sentence>
@@ -1019,13 +1019,13 @@
             <Opinions><Opinion target="spot" from="7" to="11" /></Opinions></sentence>
             <sentence id="en_Murphy's_478075041:1">
                 <text>&#8211; I can't believe Murphy's has been around for over 25 years, amazing.</text>
-            <Opinions /></sentence>
+            <Opinions><Opinion target="Murphy's" from="18" to="26" /></Opinions></sentence>
             <sentence id="en_Murphy's_478075041:2">
                 <text>That's a huge compliment, especially in the fickled restaurant business, ...enough already!</text>
-            <Opinions><Opinion target="restaurant" from="52" to="62" /></Opinions></sentence>
+            <Opinions /></sentence>
             <sentence id="en_Murphy's_478075041:3">
                 <text>Brunch at Murphy's is to die for, my specialty... egg white omelet, the food is always freshly prepared.</text>
-            <Opinions><Opinion target="Brunch" from="0" to="6" /><Opinion target="Murphy's" from="10" to="18" /><Opinion target="egg white omelet" from="50" to="66" /><Opinion target="food" from="72" to="76" /></Opinions></sentence>
+            <Opinions><Opinion target="Brunch" from="0" to="6" /><Opinion target="Murphy" from="10" to="16" /><Opinion target="egg white omelet" from="50" to="66" /><Opinion target="food" from="72" to="76" /></Opinions></sentence>
             <sentence id="en_Murphy's_478075041:4">
                 <text>It's the perfect spot for a romantic date for 2 or a secret rendezvous!</text>
             <Opinions><Opinion target="spot" from="17" to="21" /></Opinions></sentence>
@@ -1184,7 +1184,7 @@
             <Opinions><Opinion target="sushi eater" from="16" to="27" /><Opinion target="fish" from="86" to="90" /><Opinion target="service" from="115" to="122" /></Opinions></sentence>
             <sentence id="en_BlueRibbonSushi_478218517:2">
                 <text>Not only can the selection be innovative, but there's a nice balance of traditional sushi as well.</text>
-            <Opinions><Opinion target="selection" from="17" to="26" /><Opinion target="sushi" from="84" to="89" /></Opinions></sentence>
+            <Opinions><Opinion target="selection" from="17" to="26" /><Opinion target="balance of traditional sushi" from="61" to="89" /></Opinions></sentence>
             <sentence id="en_BlueRibbonSushi_478218517:3">
                 <text>The nicest waiters in town.</text>
             <Opinions><Opinion target="waiters" from="11" to="18" /></Opinions></sentence>
@@ -1213,7 +1213,7 @@
             <Opinions /></sentence>
             <sentence id="en_BlueRibbonSushi_478218509:1">
                 <text>Your a sushi fan, you love expertly cut fish, great sake, a killer SOHO location, and of course: Salmon, Tuna, Fluke, Yellow Tail, Cod, Mackeral, Jellyfish, Sea Urchin, Shrimp, Lobster, Sea Bream, Trout, Milk Fish, Blue Fin Tuna, Eel, Crab, Sardine, Monk Fish, Roe, Scallop, Oysters, and a varity of Toro.</text>
-            <Opinions><Opinion target="fish" from="40" to="44" /><Opinion target="sake" from="52" to="56" /><Opinion target="SOHO location" from="67" to="80" /><Opinion target="Salmon" from="97" to="103" /><Opinion target="Tuna" from="105" to="109" /><Opinion target="Fluke" from="111" to="116" /><Opinion target="Yellow Tail" from="118" to="129" /><Opinion target="Cod" from="131" to="134" /><Opinion target="Mackeral" from="136" to="144" /><Opinion target="Jellyfish" from="146" to="155" /><Opinion target="Sea Urchin" from="157" to="167" /><Opinion target="Shrimp" from="169" to="175" /><Opinion target="Lobster" from="177" to="184" /><Opinion target="Sea Bream" from="186" to="195" /><Opinion target="Trout" from="197" to="202" /><Opinion target="Milk Fish" from="204" to="213" /><Opinion target="Blue Fin Tuna" from="215" to="228" /><Opinion target="Eel" from="230" to="233" /><Opinion target="Crab" from="235" to="239" /><Opinion target="Sardine" from="241" to="248" /><Opinion target="Monk Fish" from="250" to="259" /><Opinion target="Scallop" from="266" to="273" /><Opinion target="Oysters" from="275" to="282" /><Opinion target="varity of Toro" from="290" to="304" /></Opinions></sentence>
+            <Opinions><Opinion target="fish" from="40" to="44" /><Opinion target="sake" from="52" to="56" /><Opinion target="SOHO location" from="67" to="80" /><Opinion target="Salmon" from="97" to="103" /><Opinion target="Tuna" from="105" to="109" /><Opinion target="Fluke" from="111" to="116" /><Opinion target="Yellow Tail" from="118" to="129" /><Opinion target="Cod" from="131" to="134" /><Opinion target="Mackeral" from="136" to="144" /><Opinion target="Jellyfish" from="146" to="155" /><Opinion target="Sea Urchin" from="157" to="167" /><Opinion target="Shrimp" from="169" to="175" /><Opinion target="Lobster" from="177" to="184" /><Opinion target="Sea Bream" from="186" to="195" /><Opinion target="Trout" from="197" to="202" /><Opinion target="Milk Fish" from="204" to="213" /><Opinion target="Blue Fin Tuna" from="215" to="228" /><Opinion target="Eel" from="230" to="233" /><Opinion target="Crab" from="235" to="239" /><Opinion target="Sardine" from="241" to="248" /><Opinion target="Monk Fish" from="250" to="259" /><Opinion target="Roe" from="261" to="264" /><Opinion target="Scallop" from="266" to="273" /><Opinion target="Oysters" from="275" to="282" /><Opinion target="of" from="297" to="299" /><Opinion target="Toro" from="300" to="304" /></Opinions></sentence>
             <sentence id="en_BlueRibbonSushi_478218509:2">
                 <text>There is only one place on the east coast that has it all, plus a lot more.</text>
             <Opinions /></sentence>
@@ -1222,7 +1222,7 @@
             <Opinions /></sentence>
             <sentence id="en_BlueRibbonSushi_478218509:4">
                 <text>Bring your cell phone cause you may have to wait to get into the best sushi restaurant in the world: BLUE RIBBON SUSHI.</text>
-            <Opinions><Opinion target="sushi" from="70" to="75" /></Opinions></sentence>
+            <Opinions /></sentence>
             <sentence id="en_BlueRibbonSushi_478218509:5">
                 <text>Believe it baby!</text>
             <Opinions /></sentence>
@@ -1266,7 +1266,7 @@
             <Opinions /></sentence>
             <sentence id="en_BlueRibbonSushi_478218512:3">
                 <text>Try the Chef's Choice for sushi as the smoked yellowtail was incredible and the rolls were also tasty.</text>
-            <Opinions><Opinion target="Chef's Choice for sushi" from="8" to="31" /><Opinion target="smoked yellowtail" from="39" to="56" /><Opinion target="rolls" from="80" to="85" /></Opinions></sentence>
+            <Opinions><Opinion target="Chef's Choice" from="8" to="21" /><Opinion target="sushi" from="26" to="31" /><Opinion target="smoked yellowtail" from="39" to="56" /><Opinion target="rolls" from="80" to="85" /></Opinions></sentence>
         </sentences>
     </Review>
     <Review rid="en_MiopostoCaffe_478542921">
@@ -1279,10 +1279,10 @@
             <Opinions><Opinion target="service" from="50" to="57" /><Opinion target="food" from="74" to="78" /></Opinions></sentence>
             <sentence id="en_MiopostoCaffe_478542921:2">
                 <text>I know many people have their favorite types of pizza and pizza places, but Mioposto's pizza lacks quality and good taste.</text>
-            <Opinions><Opinion target="Mioposto's pizza" from="76" to="92" /></Opinions></sentence>
+            <Opinions><Opinion target="pizza" from="87" to="92" /></Opinions></sentence>
             <sentence id="en_MiopostoCaffe_478542921:3">
                 <text>To be honest, I've had better frozen pizza.</text>
-            <Opinions><Opinion target="frozen pizza" from="30" to="42" /></Opinions></sentence>
+            <Opinions /></sentence>
             <sentence id="en_MiopostoCaffe_478542921:4">
                 <text>I'm not kidding.</text>
             <Opinions /></sentence>
@@ -1301,7 +1301,7 @@
             <Opinions><Opinion target="place" from="57" to="62" /></Opinions></sentence>
             <sentence id="en_BlueRibbonSushi_478218339:2" OutOfScope="TRUE">
                 <text>People complain about the dim lighting, but that is one what I love about this place - if you want to stare at your food in bright light, go to McDonalds.</text>
-            <Opinions><Opinion target="lighting" from="30" to="38" /><Opinion target="place" from="79" to="84" /></Opinions></sentence>
+            <Opinions><Opinion target="dim lighting" from="26" to="38" /><Opinion target="place" from="79" to="84" /></Opinions></sentence>
             <sentence id="en_BlueRibbonSushi_478218339:3">
                 <text>The food is fantastic, and the waiting staff has been perfect every single time we've been there.</text>
             <Opinions><Opinion target="food" from="4" to="8" /><Opinion target="waiting staff" from="31" to="44" /></Opinions></sentence>
@@ -1326,7 +1326,7 @@
             <Opinions /></sentence>
             <sentence id="en_StackRestaurant__Bar_478538242:3">
                 <text>The appetizer of oysters, lobster, crab (small size) made a perfect entre for my wife.</text>
-            <Opinions><Opinion target="appetizer" from="4" to="13" /><Opinion target="oysters" from="17" to="24" /><Opinion target="lobster, crab" from="26" to="39" /></Opinions></sentence>
+            <Opinions><Opinion target="appetizer" from="4" to="13" /><Opinion target="oysters" from="17" to="24" /><Opinion target="lobster" from="26" to="33" /><Opinion target="crab" from="35" to="39" /></Opinions></sentence>
             <sentence id="en_StackRestaurant__Bar_478538242:4">
                 <text>Seabass on lobster risotto was the best.</text>
             <Opinions><Opinion target="Seabass on lobster risotto" from="0" to="26" /></Opinions></sentence>
@@ -1354,7 +1354,7 @@
             <Opinions><Opinion target="service" from="37" to="44" /></Opinions></sentence>
             <sentence id="en_SchoonerOrLater_479842021:3">
                 <text>The food was ok, but the service was so poor that the food was cold buy the time everyone in my party was served.</text>
-            <Opinions><Opinion target="food" from="4" to="8" /><Opinion target="service" from="25" to="32" /></Opinions></sentence>
+            <Opinions><Opinion target="food" from="4" to="8" /><Opinion target="service" from="25" to="32" /><Opinion target="food" from="54" to="58" /></Opinions></sentence>
             <sentence id="en_SchoonerOrLater_479842021:4">
                 <text>Even then, the order was not correct and we were still waiting for a couple items.</text>
             <Opinions /></sentence>
@@ -1431,7 +1431,7 @@
             <Opinions><Opinion target="place" from="25" to="30" /></Opinions></sentence>
             <sentence id="en_Ray'sBoathouse_477775920:3">
                 <text>Great seasonal fish and seafood, with a classy waterfront setting.</text>
-            <Opinions><Opinion target="seasonal fish and seafood" from="6" to="31" /><Opinion target="waterfront setting" from="47" to="65" /></Opinions></sentence>
+            <Opinions><Opinion target="seasonal fish" from="6" to="19" /><Opinion target="seafood" from="24" to="31" /><Opinion target="waterfront setting" from="47" to="65" /></Opinions></sentence>
             <sentence id="en_Ray'sBoathouse_477775920:4">
                 <text>Always a winner.</text>
             <Opinions /></sentence>
@@ -1516,7 +1516,7 @@
             <Opinions /></sentence>
             <sentence id="en_PagodaRestaurant_479983203:4">
                 <text>the ambiance of the restaurant was nice and good for fine dinning.</text>
-            <Opinions><Opinion target="ambiance" from="4" to="12" /><Opinion target="restaurant" from="20" to="30" /></Opinions></sentence>
+            <Opinions><Opinion target="ambiance" from="4" to="12" /></Opinions></sentence>
             <sentence id="en_PagodaRestaurant_479983203:5">
                 <text>not too fine thought that you feel uncomfortable and have to dress up.</text>
             <Opinions /></sentence>
@@ -1540,13 +1540,13 @@
             <Opinions><Opinion target="honey walnyt prawns" from="5" to="24" /></Opinions></sentence>
             <sentence id="en_PagodaRestaurant_479983203:12">
                 <text>next one that we ordered were prawns and scallop with brocolli.</text>
-            <Opinions /></sentence>
+            <Opinions><Opinion target="with brocolli" from="49" to="62" /></Opinions></sentence>
             <sentence id="en_PagodaRestaurant_479983203:13">
                 <text>the brocollis were so fresh and tasty.</text>
             <Opinions><Opinion target="brocollis" from="4" to="13" /></Opinions></sentence>
             <sentence id="en_PagodaRestaurant_479983203:14">
                 <text>i would normally not finish the brocolli when i order these kinds of food but for the first time, every piece was as eventful as the first one... the scallops and prawns was so fresh and nicely cooked.</text>
-            <Opinions><Opinion target="brocolli" from="32" to="40" /><Opinion target="scallops and prawns" from="150" to="169" /></Opinions></sentence>
+            <Opinions><Opinion target="scallops" from="150" to="158" /><Opinion target="prawns" from="163" to="169" /></Opinions></sentence>
             <sentence id="en_PagodaRestaurant_479983203:15">
                 <text>not chewy at all.</text>
             <Opinions /></sentence>
@@ -1574,7 +1574,7 @@
             <Opinions><Opinion target="portions" from="8" to="16" /></Opinions></sentence>
             <sentence id="en_BlueRibbonSushi_478219459:1">
                 <text>&#8211; The sushi here is perfectly good, but for $5 a piece, either the slices of fish should be larger, or there should be no pretense that this is a moderately priced restaurant (even for NYC).</text>
-            <Opinions><Opinion target="sushi" from="6" to="11" /><Opinion target="slices" from="67" to="73" /><Opinion target="fish" from="77" to="81" /></Opinions></sentence>
+            <Opinions><Opinion target="sushi" from="6" to="11" /><Opinion target="slices of fish" from="67" to="81" /></Opinions></sentence>
             <sentence id="en_BlueRibbonSushi_478219459:2">
                 <text>We easily spent more than $40 per person (not including alcohol) and were still hungry.</text>
             <Opinions /></sentence>
@@ -1596,16 +1596,16 @@
             <Opinions /></sentence>
             <sentence id="en_ParkChaletGardenRestaurant_477778211:3">
                 <text>The restaurant was busy, however there were a few tables open.</text>
-            <Opinions><Opinion target="restaurant" from="4" to="14" /></Opinions></sentence>
+            <Opinions /></sentence>
             <sentence id="en_ParkChaletGardenRestaurant_477778211:4">
                 <text>We put out name down and although there were open tables we were told that it'd be a 30 minute wait.</text>
             <Opinions /></sentence>
             <sentence id="en_ParkChaletGardenRestaurant_477778211:5">
                 <text>So here we are, my wife, 3 year old daughter and I trying to pass the time by hanging out in the front of the building (where the murals and artifacts are).</text>
-            <Opinions><Opinion target="murals" from="130" to="136" /></Opinions></sentence>
+            <Opinions><Opinion target="murals" from="130" to="136" /><Opinion target="artifacts" from="141" to="150" /></Opinions></sentence>
             <sentence id="en_ParkChaletGardenRestaurant_477778211:6">
                 <text>30 minutes went by and sure enough the pager buzzer went off.</text>
-            <Opinions /></sentence>
+            <Opinions><Opinion target="pager" from="39" to="44" /></Opinions></sentence>
             <sentence id="en_ParkChaletGardenRestaurant_477778211:7">
                 <text>We went back to the restaurant and low and behold, we were seated at one of the tables that was available 30 minutes ago!!</text>
             <Opinions /></sentence>
@@ -1623,7 +1623,7 @@
             <Opinions /></sentence>
             <sentence id="en_ParkChaletGardenRestaurant_477778211:12">
                 <text>Oh I forgot to mention that they don't have bread service.</text>
-            <Opinions><Opinion target="service" from="50" to="57" /></Opinions></sentence>
+            <Opinions><Opinion target="bread service" from="44" to="57" /></Opinions></sentence>
             <sentence id="en_ParkChaletGardenRestaurant_477778211:13">
                 <text>Its a good thing my daughter had some snacks in her lunch bag.</text>
             <Opinions /></sentence>
@@ -1635,7 +1635,7 @@
             <Opinions><Opinion target="service" from="87" to="94" /></Opinions></sentence>
             <sentence id="en_ParkChaletGardenRestaurant_477778211:16">
                 <text>Food wise, its ok but a bit pricey for what you get considering the restaurant isn't a fancy place.</text>
-            <Opinions><Opinion target="Food" from="0" to="4" /><Opinion target="restaurant" from="68" to="78" /></Opinions></sentence>
+            <Opinions><Opinion target="Food" from="0" to="4" /></Opinions></sentence>
             <sentence id="en_ParkChaletGardenRestaurant_477778211:17">
                 <text>The upside of the restaurant?</text>
             <Opinions /></sentence>
@@ -1650,7 +1650,7 @@
             <Opinions><Opinion target="Parking" from="0" to="7" /></Opinions></sentence>
             <sentence id="en_ParkChaletGardenRestaurant_477778211:21">
                 <text>Another plus is the open feel of the restaurant with glass walls on all sides.</text>
-            <Opinions><Opinion target="restaurant" from="37" to="47" /><Opinion target="glass walls" from="53" to="64" /></Opinions></sentence>
+            <Opinions><Opinion target="feel" from="25" to="29" /><Opinion target="restaurant" from="37" to="47" /><Opinion target="glass walls" from="53" to="64" /></Opinions></sentence>
             <sentence id="en_ParkChaletGardenRestaurant_477778211:22" OutOfScope="TRUE">
                 <text>I'd hate for tourists to go to Park Chalet and think that this is how all San Francisco restaurants are like.</text>
             <Opinions /></sentence>
@@ -1684,7 +1684,7 @@
             <Opinions><Opinion target="Green tea creme brulee" from="0" to="22" /></Opinions></sentence>
             <sentence id="en_BlueRibbonSushi_478218524:8">
                 <text>It isn't the cheapest sushi but has been worth it every time.</text>
-            <Opinions><Opinion target="sushi" from="22" to="27" /></Opinions></sentence>
+            <Opinions /></sentence>
         </sentences>
     </Review>
     <Review rid="en_SchoonerOrLater_477965850">
@@ -1694,10 +1694,10 @@
             <Opinions><Opinion target="customer service" from="10" to="26" /></Opinions></sentence>
             <sentence id="en_SchoonerOrLater_477965850:1">
                 <text>&#8211; Schooner or Later's charming location along the marina in Long Beach and average food does not, unfortunately, compensate for its very poor customer service.</text>
-            <Opinions><Opinion target="food" from="83" to="87" /><Opinion target="customer service" from="142" to="158" /></Opinions></sentence>
+            <Opinions><Opinion target="location" from="31" to="39" /><Opinion target="food" from="83" to="87" /><Opinion target="customer service" from="142" to="158" /></Opinions></sentence>
             <sentence id="en_SchoonerOrLater_477965850:2">
                 <text>While this diner had reasonably good food, the restaurant staff seemed completely indifferent to our presence, and this attitude was reflected in the lack of service.</text>
-            <Opinions><Opinion target="diner" from="11" to="16" /><Opinion target="food" from="37" to="41" /><Opinion target="restaurant staff" from="47" to="63" /><Opinion target="service" from="158" to="165" /></Opinions></sentence>
+            <Opinions><Opinion target="food" from="37" to="41" /><Opinion target="restaurant staff" from="47" to="63" /><Opinion target="service" from="158" to="165" /></Opinions></sentence>
             <sentence id="en_SchoonerOrLater_477965850:3">
                 <text>As part of a small party of four, our food was dropped off without comment;</text>
             <Opinions /></sentence>
@@ -1753,19 +1753,19 @@
             <Opinions /></sentence>
             <sentence id="en_Ray'sBoathouse_477775915:1">
                 <text>&#8211; Ray's is THE place to go for high quality seafood dinners.</text>
-            <Opinions><Opinion target="Ray's" from="2" to="7" /><Opinion target="seafood dinners" from="44" to="59" /></Opinions></sentence>
+            <Opinions><Opinion target="seafood dinners" from="44" to="59" /></Opinions></sentence>
             <sentence id="en_Ray'sBoathouse_477775915:2">
                 <text>And they give good quantity for the price.</text>
             <Opinions /></sentence>
             <sentence id="en_Ray'sBoathouse_477775915:3">
                 <text>We were only in Seattle for one night and I'm so glad we picked Rays for dinner!</text>
-            <Opinions /></sentence>
+            <Opinions><Opinion target="Rays" from="64" to="68" /></Opinions></sentence>
             <sentence id="en_Ray'sBoathouse_477775915:4">
                 <text>I love Dungeness crabs and at Ray's you can get them served in about 6 different ways!</text>
             <Opinions><Opinion target="Dungeness crabs" from="7" to="22" /></Opinions></sentence>
             <sentence id="en_Ray'sBoathouse_477775915:5">
                 <text>We shared the family platter and I especially enjoyed the black cod in sake kasu.</text>
-            <Opinions><Opinion target="family platter" from="14" to="28" /><Opinion target="black cod in sake kasu" from="58" to="80" /></Opinions></sentence>
+            <Opinions><Opinion target="black cod in sake kasu" from="58" to="80" /></Opinions></sentence>
             <sentence id="en_Ray'sBoathouse_477775915:6">
                 <text>I ended the meal with the unusual dessert of a port and chocolate tasting....yummy!</text>
             <Opinions><Opinion target="dessert of a port and chocolate tasting" from="34" to="73" /></Opinions></sentence>
@@ -1781,10 +1781,10 @@
             <Opinions><Opinion target="Breakfast" from="6" to="15" /></Opinions></sentence>
             <sentence id="en_SnoozeanAMEatery_479991844:1">
                 <text>&#8211; Great drinks , corn beef hash, coffee, B Fast burritos, Gluten Free menu.</text>
-            <Opinions><Opinion target="drinks" from="8" to="14" /><Opinion target="corn beef hash" from="17" to="31" /><Opinion target="coffee" from="33" to="39" /><Opinion target="burritos" from="48" to="56" /><Opinion target="menu" from="70" to="74" /></Opinions></sentence>
+            <Opinions><Opinion target="drinks" from="8" to="14" /><Opinion target="corn beef hash" from="17" to="31" /><Opinion target="coffee" from="33" to="39" /><Opinion target="B Fast burritos" from="41" to="56" /><Opinion target="menu" from="70" to="74" /></Opinions></sentence>
             <sentence id="en_SnoozeanAMEatery_479991844:2">
                 <text>The service is fantastic at this fun place.</text>
-            <Opinions><Opinion target="service" from="4" to="11" /></Opinions></sentence>
+            <Opinions><Opinion target="service" from="4" to="11" /><Opinion target="place" from="37" to="42" /></Opinions></sentence>
             <sentence id="en_SnoozeanAMEatery_479991844:3">
                 <text>If there is a line very day of the week for the entire time a place is open, you know it is great.</text>
             <Opinions /></sentence>
@@ -1831,16 +1831,16 @@
             <Opinions><Opinion target="wood decor" from="56" to="66" /></Opinions></sentence>
             <sentence id="en_StackRestaurant__Bar_478538239:3">
                 <text>The music playing was very hip, 20-30 something pop music, but the subwoofer to the sound system was located under my seat, which became annoying midway through dinner.</text>
-            <Opinions><Opinion target="music" from="4" to="9" /><Opinion target="sound system" from="84" to="96" /></Opinions></sentence>
+            <Opinions><Opinion target="music" from="4" to="9" /></Opinions></sentence>
             <sentence id="en_StackRestaurant__Bar_478538239:4">
                 <text>We were quickly seated and requested the special dinner, which came with: 1) Shellfish and Shrimp appetizer or Caesar Salad, 2) 9 oz steak (with a single potato chip), and 3) homemade donut holes.</text>
-            <Opinions><Opinion target="donut holes" from="184" to="195" /></Opinions></sentence>
+            <Opinions><Opinion target="Shellfish and Shrimp appetizer" from="77" to="107" /><Opinion target="Caesar Salad" from="111" to="123" /><Opinion target="potato chip" from="154" to="165" /><Opinion target="donut holes" from="184" to="195" /></Opinions></sentence>
             <sentence id="en_StackRestaurant__Bar_478538239:5">
                 <text>I got the shellfish and shrimp appetizer and it was alright.</text>
             <Opinions><Opinion target="shellfish and shrimp appetizer" from="10" to="40" /></Opinions></sentence>
             <sentence id="en_StackRestaurant__Bar_478538239:6">
                 <text>It wasn't the freshest seafood ever, but the taste and presentation was OK.</text>
-            <Opinions><Opinion target="presentation" from="55" to="67" /></Opinions></sentence>
+            <Opinions><Opinion target="seafood" from="23" to="30" /><Opinion target="presentation" from="55" to="67" /></Opinions></sentence>
             <sentence id="en_StackRestaurant__Bar_478538239:7">
                 <text>Before the steak came, the server told us that the steak did not come with any sides and suggested I pick something from the menu.</text>
             <Opinions><Opinion target="server" from="27" to="33" /></Opinions></sentence>
@@ -1858,7 +1858,7 @@
             <Opinions><Opinion target="steak" from="4" to="9" /></Opinions></sentence>
             <sentence id="en_StackRestaurant__Bar_478538239:12">
                 <text>It?s served with either a peppercorn sauce or red wine reduction, though both were indistinguishable in taste.</text>
-            <Opinions /></sentence>
+            <Opinions><Opinion target="sauce" from="37" to="42" /><Opinion target="red wine reduction" from="46" to="64" /></Opinions></sentence>
             <sentence id="en_StackRestaurant__Bar_478538239:13">
                 <text>Though, one thing I realized later on was that the restaurant either used MSG or a meat tenderizer on the steak.</text>
             <Opinions /></sentence>
@@ -1867,16 +1867,16 @@
             <Opinions /></sentence>
             <sentence id="en_StackRestaurant__Bar_478538239:15">
                 <text>Finally, the homemade donut holes were served for desert.</text>
-            <Opinions><Opinion target="donut holes" from="22" to="33" /></Opinions></sentence>
+            <Opinions><Opinion target="homemade donut holes" from="13" to="33" /></Opinions></sentence>
             <sentence id="en_StackRestaurant__Bar_478538239:16">
                 <text>They came in their own nifty take out box and with some homemade frosting; very light and not-too-sweet.</text>
-            <Opinions /></sentence>
+            <Opinions><Opinion target="frosting" from="65" to="73" /></Opinions></sentence>
             <sentence id="en_StackRestaurant__Bar_478538239:17">
                 <text>The desert was the perfect ending to an almost perfect dinner.</text>
             <Opinions><Opinion target="desert" from="4" to="10" /></Opinions></sentence>
             <sentence id="en_StackRestaurant__Bar_478538239:18">
                 <text>The dinner only took us about an hour and the prices were alright for the strip, almost $50/pp after tax and tip (about average).</text>
-            <Opinions><Opinion target="dinner" from="4" to="10" /></Opinions></sentence>
+            <Opinions /></sentence>
             <sentence id="en_StackRestaurant__Bar_478538239:19">
                 <text>But the servers were extremely attentive and very friendly.</text>
             <Opinions><Opinion target="servers" from="8" to="15" /></Opinions></sentence>
@@ -1898,7 +1898,7 @@
             <Opinions><Opinion target="sake" from="12" to="16" /></Opinions></sentence>
             <sentence id="en_BlueRibbonSushi_478218337:2">
                 <text>Server made several sake suggestions which were very good.</text>
-            <Opinions><Opinion target="Server" from="0" to="6" /><Opinion target="sake suggestions" from="20" to="36" /></Opinions></sentence>
+            <Opinions><Opinion target="Server" from="0" to="6" /><Opinion target="sake" from="20" to="24" /></Opinions></sentence>
             <sentence id="en_BlueRibbonSushi_478218337:3">
                 <text>had many dishes but the BEST was the lobster 3 ways.</text>
             <Opinions><Opinion target="dishes" from="9" to="15" /><Opinion target="lobster 3 ways" from="37" to="51" /></Opinions></sentence>
@@ -1920,7 +1920,7 @@
             <Opinions /></sentence>
             <sentence id="en_SnoozeanAMEatery_480412257:3">
                 <text>The waiter was a bit unfriendly and the feel of the restaurant was crowded.</text>
-            <Opinions><Opinion target="waiter" from="4" to="10" /><Opinion target="feel" from="40" to="44" /><Opinion target="restaurant" from="52" to="62" /></Opinions></sentence>
+            <Opinions><Opinion target="waiter" from="4" to="10" /><Opinion target="feel" from="40" to="44" /></Opinions></sentence>
             <sentence id="en_SnoozeanAMEatery_480412257:4">
                 <text>Also, there was only one bathroom stall- probably need more for such big crowds.</text>
             <Opinions><Opinion target="bathroom stall" from="25" to="39" /></Opinions></sentence>
@@ -1942,7 +1942,7 @@
         <sentences>
             <sentence id="en_MiopostoCaffe_478543072:0">
                 <text>My favortie pizza joint in Seattle</text>
-            <Opinions /></sentence>
+            <Opinions><Opinion target="pizza joint" from="12" to="23" /></Opinions></sentence>
             <sentence id="en_MiopostoCaffe_478543072:1">
                 <text>&#8211; This is my "must bring out of town guests to" restaurant and they always enjoy and rave about it.</text>
             <Opinions /></sentence>
@@ -1973,7 +1973,7 @@
             <Opinions /></sentence>
             <sentence id="en_MiopostoCaffe_479702043:1">
                 <text>&#8211; My husband and I love eating at Mioposto Caf&#233;.</text>
-            <Opinions /></sentence>
+            <Opinions><Opinion target="Mioposto Caf&#233;" from="34" to="47" /></Opinions></sentence>
             <sentence id="en_MiopostoCaffe_479702043:2">
                 <text>We&#8217;re can&#8217;t say enough about their delicious gourmet pizza&#8217;s!</text>
             <Opinions><Opinion target="pizza&#8217;s" from="53" to="60" /></Opinions></sentence>
@@ -2050,7 +2050,7 @@
             <Opinions><Opinion target="place" from="20" to="25" /></Opinions></sentence>
             <sentence id="en_BlueRibbonSushi_478218334:4">
                 <text>Maybe it is good for that one night once in a blue moon when the chefs decide to use fish that's half-way decent.</text>
-            <Opinions><Opinion target="chefs" from="65" to="70" /><Opinion target="fish" from="85" to="89" /></Opinions></sentence>
+            <Opinions><Opinion target="fish" from="85" to="89" /></Opinions></sentence>
             <sentence id="en_BlueRibbonSushi_478218334:5">
                 <text>I have been here, spent tons of money on a chef special dinner and it was a major dissappointment.</text>
             <Opinions><Opinion target="chef special dinner" from="43" to="62" /></Opinions></sentence>
@@ -2106,7 +2106,7 @@
             <Opinions /></sentence>
             <sentence id="en_SnoozeanAMEatery_480133929:8" OutOfScope="TRUE">
                 <text>Southglenn is largest location.</text>
-            <Opinions><Opinion target="Southglenn" from="0" to="10" /></Opinions></sentence>
+            <Opinions /></sentence>
         </sentences>
     </Review>
     <Review rid="en_OpenSesame_477970936">
@@ -2125,7 +2125,7 @@
             <Opinions><Opinion target="decor" from="4" to="9" /></Opinions></sentence>
             <sentence id="en_OpenSesame_477970936:4">
                 <text>There was a really nice vibe about the place...good music, atmosphere and happy looking people.</text>
-            <Opinions><Opinion target="vibe" from="24" to="28" /><Opinion target="music" from="52" to="57" /><Opinion target="atmosphere" from="59" to="69" /><Opinion target="people" from="88" to="94" /></Opinions></sentence>
+            <Opinions><Opinion target="vibe" from="24" to="28" /><Opinion target="place" from="39" to="44" /><Opinion target="music" from="52" to="57" /><Opinion target="atmosphere" from="59" to="69" /><Opinion target="people" from="88" to="94" /></Opinions></sentence>
             <sentence id="en_OpenSesame_477970936:5">
                 <text>Our server was very professional and friendly.</text>
             <Opinions><Opinion target="server" from="4" to="10" /></Opinions></sentence>
@@ -2166,7 +2166,7 @@
             <Opinions><Opinion target="pepperoni" from="10" to="19" /></Opinions></sentence>
             <sentence id="en_Patsy'sPizzeria_478232062:1">
                 <text>&#8211; The pepperoni's cut real thick--Yum.</text>
-            <Opinions><Opinion target="pepperoni's" from="6" to="17" /></Opinions></sentence>
+            <Opinions><Opinion target="pepperoni" from="6" to="15" /></Opinions></sentence>
             <sentence id="en_Patsy'sPizzeria_478232062:2">
                 <text>The pizza itself is not exactly the best I've had EVER, but still pretty good.</text>
             <Opinions><Opinion target="pizza" from="4" to="9" /></Opinions></sentence>
@@ -2182,7 +2182,7 @@
         <sentences>
             <sentence id="en_CatalRestaurant__UvaBar_477862052:0">
                 <text>Sit in the Balcony</text>
-            <Opinions><Opinion target="Balcony" from="11" to="18" /></Opinions></sentence>
+            <Opinions /></sentence>
             <sentence id="en_CatalRestaurant__UvaBar_477862052:1">
                 <text>&#8211; Not bad.</text>
             <Opinions /></sentence>
@@ -2212,7 +2212,7 @@
             <Opinions><Opinion target="service" from="13" to="20" /></Opinions></sentence>
             <sentence id="en_CatalRestaurant__UvaBar_477862052:10">
                 <text>Our drinks kept coming but our server came by a couple times.</text>
-            <Opinions><Opinion target="server" from="31" to="37" /></Opinions></sentence>
+            <Opinions><Opinion target="drinks" from="4" to="10" /><Opinion target="server" from="31" to="37" /></Opinions></sentence>
             <sentence id="en_CatalRestaurant__UvaBar_477862052:11">
                 <text>Should check-up on us more frequently, don't you think?</text>
             <Opinions /></sentence>
@@ -2252,7 +2252,7 @@
             <Opinions><Opinion target="bathroom attendant" from="32" to="50" /></Opinions></sentence>
             <sentence id="en_StackRestaurant__Bar_478538111:10">
                 <text>The bathroom itself is very small with two toilets and only one sink, the girl was staying totally on the way hanging out paper towels from the dispenser.</text>
-            <Opinions><Opinion target="bathroom" from="4" to="12" /><Opinion target="toilets" from="43" to="50" /></Opinions></sentence>
+            <Opinions><Opinion target="bathroom" from="4" to="12" /><Opinion target="girl" from="74" to="78" /></Opinions></sentence>
             <sentence id="en_StackRestaurant__Bar_478538111:11">
                 <text>There were 3 bottles of perfume on the sink and the line of girls trying to use the sink.</text>
             <Opinions /></sentence>
@@ -2268,10 +2268,10 @@
             <Opinions><Opinion target="place" from="5" to="10" /></Opinions></sentence>
             <sentence id="en_MercedesRestaurant_478010600:1">
                 <text>&#8211; Mercedes restaurant is so tasty, the service is undeniably awesome!</text>
-            <Opinions><Opinion target="Mercedes restaurant" from="2" to="21" /><Opinion target="service" from="39" to="46" /></Opinions></sentence>
+            <Opinions><Opinion target="&#8211;" from="0" to="1" /><Opinion target="Mercedes restaurant" from="2" to="21" /><Opinion target="service" from="39" to="46" /></Opinions></sentence>
             <sentence id="en_MercedesRestaurant_478010600:2">
                 <text>The chips  and salsa are so yummy, and the prices are fabulous.</text>
-            <Opinions><Opinion target="chips  and salsa" from="4" to="20" /></Opinions></sentence>
+            <Opinions><Opinion target="chips" from="4" to="9" /><Opinion target="salsa" from="15" to="20" /></Opinions></sentence>
             <sentence id="en_MercedesRestaurant_478010600:3">
                 <text>The atmosphere is aspiring, and  the decor is festive and amazing..</text>
             <Opinions><Opinion target="atmosphere" from="4" to="14" /><Opinion target="decor" from="37" to="42" /></Opinions></sentence>
@@ -2293,10 +2293,10 @@
             <Opinions><Opinion target="Service" from="11" to="18" /></Opinions></sentence>
             <sentence id="en_SnoozeanAMEatery_480171723:2" OutOfScope="TRUE">
                 <text>&#8211; This review is for the Southglen location which is not listed in Citysearch:  I wish this review would make a difference enough for it to be addressed by management but Snooze has people climbing over each other for a chance to eat at this overpriced restaurant with mediocre food and service, so this review as well as the other negative ones for their Larimer location will go unaddressed.</text>
-            <Opinions><Opinion target="management" from="156" to="166" /><Opinion target="restaurant" from="253" to="263" /><Opinion target="food" from="278" to="282" /><Opinion target="service" from="287" to="294" /></Opinions></sentence>
+            <Opinions><Opinion target="restaurant" from="253" to="263" /><Opinion target="food" from="278" to="282" /><Opinion target="service" from="287" to="294" /></Opinions></sentence>
             <sentence id="en_SnoozeanAMEatery_480171723:3">
                 <text>The presentation of Snooze is excellent and it is one of those places that you feel more sophisticated just for being there; but peel back the layers and you have an overpriced IHOP with a high brow menu.</text>
-            <Opinions><Opinion target="Snooze" from="20" to="26" /><Opinion target="IHOP" from="177" to="181" /><Opinion target="menu" from="199" to="203" /></Opinions></sentence>
+            <Opinions><Opinion target="presentation" from="4" to="16" /><Opinion target="Snooze" from="20" to="26" /><Opinion target="IHOP" from="177" to="181" /><Opinion target="menu" from="199" to="203" /></Opinions></sentence>
             <sentence id="en_SnoozeanAMEatery_480171723:4">
                 <text>To start off, approximately 8-10 oz of orange juice will cost you $3.</text>
             <Opinions><Opinion target="orange juice" from="39" to="51" /></Opinions></sentence>
@@ -2308,10 +2308,10 @@
             <Opinions><Opinion target="menu" from="66" to="70" /></Opinions></sentence>
             <sentence id="en_SnoozeanAMEatery_480171723:7">
                 <text>The pancakes were certainly inventive but $8.50 for 3 - 6" pancakes (one of them was more like 5") in the pancake flight (sample of 3 different pancakes) is well over-priced.</text>
-            <Opinions><Opinion target="pancakes" from="4" to="12" /><Opinion target="pancakes" from="59" to="67" /></Opinions></sentence>
+            <Opinions><Opinion target="pancakes" from="4" to="12" /><Opinion target="pancakes" from="59" to="67" /><Opinion target="pancakes" from="144" to="152" /></Opinions></sentence>
             <sentence id="en_SnoozeanAMEatery_480171723:8">
                 <text>The pancakes should be larger (at least 8") to justify the expense even with the unique offerings.</text>
-            <Opinions><Opinion target="pancakes" from="4" to="12" /></Opinions></sentence>
+            <Opinions><Opinion target="pancakes" from="4" to="12" /><Opinion target="offerings" from="88" to="97" /></Opinions></sentence>
             <sentence id="en_SnoozeanAMEatery_480171723:9" OutOfScope="TRUE">
                 <text>The flavors were good but I have had far better pancakes at a German pancake specialty restaurant that were a little cheaper but significantly larger.</text>
             <Opinions /></sentence>
@@ -2326,13 +2326,13 @@
             <Opinions><Opinion target="manager" from="61" to="68" /></Opinions></sentence>
             <sentence id="en_SnoozeanAMEatery_480171723:13">
                 <text>In the end our check came to $27 for 4 small pancakes, a breakfast burrito, an orange juice and an iced tea (I had water).</text>
-            <Opinions><Opinion target="pancakes" from="45" to="53" /><Opinion target="breakfast burrito" from="57" to="74" /><Opinion target="orange" from="79" to="85" /></Opinions></sentence>
+            <Opinions><Opinion target="pancakes" from="45" to="53" /><Opinion target="breakfast burrito" from="57" to="74" /><Opinion target="orange juice" from="79" to="91" /><Opinion target="iced tea" from="99" to="107" /></Opinions></sentence>
             <sentence id="en_SnoozeanAMEatery_480171723:14" OutOfScope="TRUE">
                 <text>This was 2 times what the same meal would have cost at Le Peep.</text>
             <Opinions /></sentence>
             <sentence id="en_SnoozeanAMEatery_480171723:15" OutOfScope="TRUE">
                 <text>Snooze provided an inventive pancake offering, but Le Peep would have provided better service and quality.</text>
-            <Opinions><Opinion target="Snooze" from="0" to="6" /><Opinion target="pancake" from="29" to="36" /><Opinion target="service" from="86" to="93" /></Opinions></sentence>
+            <Opinions><Opinion target="service" from="86" to="93" /></Opinions></sentence>
         </sentences>
     </Review>
     <Review rid="en_Ray'sBoathouse_477775918">
@@ -2342,28 +2342,28 @@
             <Opinions><Opinion target="view" from="28" to="32" /></Opinions></sentence>
             <sentence id="en_Ray'sBoathouse_477775918:1">
                 <text>&#8211; I am exceedingly pleased to report that my dinner at Ray's Boathouse last Friday completely exceeded my expectations.</text>
-            <Opinions><Opinion target="dinner" from="45" to="51" /><Opinion target="Ray's Boathouse" from="55" to="70" /></Opinions></sentence>
+            <Opinions><Opinion target="Ray's Boathouse" from="55" to="70" /></Opinions></sentence>
             <sentence id="en_Ray'sBoathouse_477775918:2">
                 <text>Ray's is something of a Seattle institution, but given its gorgeous Sound views, I had suspected that the accolades were more due to the scenery than to the food and service.</text>
-            <Opinions><Opinion target="Ray's" from="0" to="5" /><Opinion target="Sound views" from="68" to="79" /><Opinion target="scenery" from="137" to="144" /><Opinion target="food" from="157" to="161" /><Opinion target="service" from="166" to="173" /></Opinions></sentence>
+            <Opinions><Opinion target="Sound views" from="68" to="79" /><Opinion target="scenery" from="137" to="144" /><Opinion target="food" from="157" to="161" /><Opinion target="service" from="166" to="173" /></Opinions></sentence>
             <sentence id="en_Ray'sBoathouse_477775918:3">
                 <text>Imagine my happy surprise upon finding that the views are only the third-best thing about Ray's!</text>
-            <Opinions><Opinion target="views" from="48" to="53" /></Opinions></sentence>
+            <Opinions><Opinion target="views" from="48" to="53" /><Opinion target="Ray's" from="90" to="95" /></Opinions></sentence>
             <sentence id="en_Ray'sBoathouse_477775918:4">
                 <text>To start things off, our lovely server Brooke was quickly on hand to take my drink order.</text>
             <Opinions><Opinion target="server" from="32" to="38" /><Opinion target="Brooke" from="39" to="45" /></Opinions></sentence>
             <sentence id="en_Ray'sBoathouse_477775918:5">
                 <text>My party of two was feeling particularly ambitious, and we splurged on the Shilshole Sampler...a beautiful assortment of enormous white gulf prawns, smoked albacore tuna, Ray's fantastic manila clams seasoned with dill, scallops in a tasty soy dressing, and a tiny pile of Dungeness crab atop a sublime butter sauce.</text>
-            <Opinions><Opinion target="Shilshole Sampler" from="75" to="92" /><Opinion target="white gulf prawns" from="130" to="147" /><Opinion target="smoked albacore tuna" from="149" to="169" /><Opinion target="manila clams seasoned with dill" from="187" to="218" /><Opinion target="scallops" from="220" to="228" /><Opinion target="soy dressing" from="240" to="252" /><Opinion target="crab" from="283" to="287" /><Opinion target="butter sauce" from="303" to="315" /></Opinions></sentence>
+            <Opinions><Opinion target="Shilshole Sampler" from="75" to="92" /><Opinion target="white gulf prawns" from="130" to="147" /><Opinion target="smoked albacore tuna" from="149" to="169" /><Opinion target="manila clams seasoned with dill" from="187" to="218" /><Opinion target="soy dressing" from="240" to="252" /><Opinion target="Dungeness crab" from="273" to="287" /><Opinion target="sauce" from="310" to="315" /></Opinions></sentence>
             <sentence id="en_Ray'sBoathouse_477775918:6">
                 <text>For my entr&amp;eacute;e, I completely enjoyed the seared Alaskan sea scallops complemented by chard, artichoke hearts, fennel, and pecorino toscano.</text>
-            <Opinions><Opinion target="Alaskan sea scallops" from="54" to="74" /><Opinion target="chard" from="91" to="96" /><Opinion target="artichoke hearts" from="98" to="114" /><Opinion target="fennel" from="116" to="122" /><Opinion target="pecorino toscano" from="128" to="144" /></Opinions></sentence>
+            <Opinions><Opinion target="seared Alaskan sea scallops" from="47" to="74" /><Opinion target=", artichoke hearts, fennel" from="96" to="122" /><Opinion target="and pecorino toscano" from="124" to="144" /></Opinions></sentence>
             <sentence id="en_Ray'sBoathouse_477775918:7">
                 <text>The scallops are apparently cooked in a black olive butter which really makes them unique (not to mention tasty).</text>
             <Opinions><Opinion target="scallops" from="4" to="12" /></Opinions></sentence>
             <sentence id="en_Ray'sBoathouse_477775918:8">
                 <text>My friend enjoyed the grilled Alaskan King Salmon with delectable creamed Washington russet potatoes and crisp green beans.</text>
-            <Opinions><Opinion target="grilled Alaskan King Salmon" from="22" to="49" /><Opinion target="creamed Washington russet potatoes" from="66" to="100" /><Opinion target="crisp green beans" from="105" to="122" /></Opinions></sentence>
+            <Opinions><Opinion target="grilled Alaskan King Salmon" from="22" to="49" /><Opinion target="creamed Washington russet potatoes and crisp green beans" from="66" to="122" /></Opinions></sentence>
             <sentence id="en_Ray'sBoathouse_477775918:9">
                 <text>I had a taste of all three items on her plate, and they were superb.</text>
             <Opinions /></sentence>
@@ -2372,7 +2372,7 @@
             <Opinions><Opinion target="server" from="4" to="10" /><Opinion target="Ray's" from="115" to="120" /></Opinions></sentence>
             <sentence id="en_Ray'sBoathouse_477775918:11">
                 <text>Two rascally kids were seated near us for the first part of our dinner...they were replaced by a delightful preteen who pretended to gag every time seafood was mentioned at her table.</text>
-            <Opinions /></sentence>
+            <Opinions><Opinion target="preteen" from="108" to="115" /></Opinions></sentence>
             <sentence id="en_Ray'sBoathouse_477775918:12">
                 <text>Given that Ray's is a seafood restaurant...well, you get the idea...</text>
             <Opinions /></sentence>

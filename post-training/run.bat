@@ -1,0 +1,12 @@
+python run_mlm.py ^
+    --output_dir=output_model/laptop_comment_phobert_pt_2 ^
+    --model_type=roberta ^
+    --model_name_or_path=vinai/phobert-base ^
+    --train_file=data/laptop_comment_2/train.raw.txt ^
+    --validation_file=data/laptop_comment_2/test.raw.txt ^
+    --do_train ^
+    --do_eval ^
+    --save_strategy=no ^
+    --num_train_epochs=2 ^
+    --max_seq_length=128 ^
+    --per_device_train_batch_size=8

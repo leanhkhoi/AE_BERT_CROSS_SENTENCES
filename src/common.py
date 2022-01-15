@@ -1,10 +1,14 @@
 import json
 import os
+import _locale
+
 from collections import namedtuple, deque
 
 import numpy as np
 import torch
 from torch.utils.data import RandomSampler, TensorDataset, DataLoader, SequentialSampler
+
+FILE_ENCODING = "utf-8" #_locale._getdefaultlocale()[1]
 
 Sentences = namedtuple('Sentences', [
     'orig_sentences', 'sentences', 'labels', 'lengths',
@@ -17,7 +21,7 @@ def get_labels():
 
 
 def read(inpput_file):
-    with open(inpput_file) as f:
+    with open(inpput_file, encoding=FILE_ENCODING) as f:
         return json.load(f)
 
 
@@ -98,14 +102,14 @@ def convert_to_features(sentences, labels, tag_map, tokenizer, seq_len):
     masks = []
     lids = []
     for sentence, label in zip(sentences, labels):
-        tokens = ["[CLS]"] + sentence
+        tokens = [tokenizer.cls_token] + sentence
         token_ids = tokenizer.convert_tokens_to_ids(tokens)
         segment_ids = [0] * len(token_ids)
         mask = [1] * len(token_ids)
         lb = [0] + [tag_map[i] for i in label]
         if len(token_ids) < seq_len:
             pad_len = seq_len - len(token_ids)
-            token_ids += tokenizer.convert_tokens_to_ids(["[PAD]"]) * pad_len
+            token_ids += tokenizer.convert_tokens_to_ids([tokenizer.pad_token]) * pad_len
             segment_ids += [0] * pad_len
             mask += [0] * pad_len
             lb += [0] * pad_len
@@ -140,7 +144,7 @@ def process_sentences(orig_sentences, orig_labels, tokenizer, max_seq_len, seq_s
 
     # Extend each sentence to include context sentences
     combined_sentences, combined_labels, sentence_numbers, sentence_starts = combine_sentences2(
-        sentences, labels, max_seq_len - 1, seq_start)
+        sentences, labels, max_seq_len - 1, seq_start, tokenizer)
 
     return Sentences(
         orig_sentences, sentences, labels, lengths, combined_sentences, combined_labels, sentence_numbers,
@@ -204,7 +208,7 @@ def tokenize_and_split(sentence, word_labels, tokenizer, max_length):
     return split_tokens, split_labels, lengths
 
 
-def combine_sentences2(lines, tags, max_seq, start=0):
+def combine_sentences2(lines, tags, max_seq, start=0, tokenizer=None):
     lines_in_sample = []
     linestarts_in_sample = []
     new_lines = []
@@ -234,7 +238,7 @@ def combine_sentences2(lines, tags, max_seq, start=0):
         ready = False
         while not ready:
             if max_seq >= (len(lines[next_idx]) + 1) + (len(new_line) + 1):  # 1 corresponding to [SEP] word
-                new_line.append('[SEP]')
+                new_line.append(tokenizer.sep_token)
                 new_tag.append('O')
                 position = len(new_line)
                 new_line.extend(lines[next_idx])
@@ -244,7 +248,7 @@ def combine_sentences2(lines, tags, max_seq, start=0):
                 j += 1
                 next_idx = (i + j) % len(lines)
             else:
-                new_line.append('[SEP]')
+                new_line.append(tokenizer.sep_token)
                 new_tag.append('O')
                 position = len(new_line)
                 new_line.extend(lines[next_idx][0:(max_seq - position)])
@@ -260,7 +264,7 @@ def combine_sentences2(lines, tags, max_seq, start=0):
             # print(counter)
             prev_line = lines[i - j][:]
             prev_tags = tags[i - j][:]
-            prev_line.append('[SEP]')
+            prev_line.append(tokenizer.sep_token)
             prev_tags.append('O')
             # print(len(prev_line), len(prev_tags))
             if len(prev_line) <= counter:
@@ -275,7 +279,7 @@ def combine_sentences2(lines, tags, max_seq, start=0):
                     new_tag[0:counter] = prev_tags[-counter:]
                     ready = True
                 else:
-                    new_line[0:counter] = ['[PAD]'] * counter
+                    new_line[0:counter] = [tokenizer.pad_token] * counter
                     new_tag[0:counter] = ['O'] * counter
                     ready = True
         new_lines.append(new_line)
@@ -415,7 +419,7 @@ def get_predictions2(probs, sentences, combined_sentence_traces):
 def write_result(fname, orig_sentences, lengths,
                  sentences, labels, predictions):
     lines = []
-    with open(fname, 'w+') as f:
+    with open(fname, 'w+', encoding=FILE_ENCODING) as f:
         toks = deque([val for sublist in sentences for val in sublist])
         labs = deque([val for sublist in labels for val in sublist])
         pred = deque([val for sublist in predictions for val in sublist])
@@ -436,7 +440,7 @@ def write_result(fname, orig_sentences, lengths,
                 lines.append(line)
             y_pred.append(word_preds)
 
-        json.dump({"raw_X": raw_X, "y_pred": y_pred}, f)
+        json.dump({"raw_X": raw_X, "y_pred": y_pred}, f, ensure_ascii=False)
     f.close()
     return lines, sentences
 

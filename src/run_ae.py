@@ -27,7 +27,7 @@ from transformers import BertPreTrainedModel, BertModel, BertTokenizer, BertLaye
     get_linear_schedule_with_warmup
 from common import get_labels, get_predictions, \
     get_predictions2, write_result, PreprocessConfig, combine_sentences2, predict, \
-    read_preprocess_load, LoaderConfig, convert_to_features, to_data_loader
+    read_preprocess_load, LoaderConfig, convert_to_features, to_data_loader, FILE_ENCODING
 import modelconfig
 from torchcrf import CRF
 
@@ -127,7 +127,7 @@ class BertForAE(BertPreTrainedModel):
         super(BertForAE, self).__init__(config)
         self.num_labels = num_labels
         self.bert = BertModel(config)
-        self.groie = GRoIE(4, config, num_labels) if model_name== 'P-SUM' else HSUM(4, config, num_labels)
+        self.groie = GRoIE(4, config, num_labels) if model_name == 'P-SUM' else HSUM(4, config, num_labels)
         self.init_weights()
 
     def forward(self, input_ids, token_type_ids=None, attention_mask=None, labels=None):
@@ -175,6 +175,7 @@ def train(args):
 
     model = BertForAE.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.bert_model], num_labels=len(label_list),
                                       model_name='P-SUM')
+
     model.to(device)
     # Prepare optimizer
     param_optimizer = [(k, v) for k, v in model.named_parameters() if v.requires_grad == True]
@@ -234,7 +235,7 @@ def train(args):
             model.train()
 
     if args.no_valid is False:
-        with open(os.path.join(args.output_dir, "valid.json"), "w") as fw:
+        with open(os.path.join(args.output_dir, "valid.json"), "w", encoding=FILE_ENCODING) as fw:
             json.dump({"valid_losses": valid_losses}, fw)
 
     torch.save(model, os.path.join(args.output_dir, "model.pt"))
@@ -247,7 +248,7 @@ def test(args, dev_as_test=None, output_dir=None, model=None,
     if model_dir is None:
         model_dir = args.output_dir
 
-    tokenizer = ABSATokenizer.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.bert_model])
+    tokenizer = ABSATokenizer.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.bert_model], do_basic_tokenize=False)
     if dev_as_test:
         data_dir = os.path.join(args.data_dir, 'dev_as_test')
     else:
@@ -287,7 +288,7 @@ def test(args, dev_as_test=None, output_dir=None, model=None,
         write_result(output_eval_json, eval_data.orig_sentences, eval_data.lengths,
                      eval_data.sentences, eval_data.labels, ensem)
 
-    #test with sentence in context
+    # test with sentence in context
     if args.no_context is False:
         seq_len = args.max_seq_length
         tag_map = {l: i for i, l in enumerate(get_labels())}
@@ -295,7 +296,7 @@ def test(args, dev_as_test=None, output_dir=None, model=None,
         # starting_pos[0] = 1
         for start_p in starting_pos:
             tt_lines, tt_tags, line_nos, line_starts = combine_sentences2(eval_data.sentences, eval_data.labels,
-                                                                          seq_len - 1, start_p)
+                                                                          seq_len - 1, start_p, tokenizer)
 
             input_ids, segment_ids, masks, label_ids = convert_to_features(tt_lines, tt_tags, tag_map, tokenizer,
                                                                            seq_len)
@@ -319,7 +320,7 @@ def test(args, dev_as_test=None, output_dir=None, model=None,
 def main():
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("--bert_model", default='bert-base', type=str)
+    parser.add_argument("--bert_model", default='bert_base', type=str)
 
     parser.add_argument("--data_dir",
                         default=None,

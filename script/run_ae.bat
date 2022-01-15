@@ -34,8 +34,11 @@ for /l %%r in (1, 1, %runs%) do (
 
     if not exist !OUTPUT_DIR! mkdir !OUTPUT_DIR!
 
+    REM python src\run_%task%.py --bert_model %bert% --num_train_epochs %epochs% ^
+    REM     --output_dir !OUTPUT_DIR! --data_dir %DATA_DIR% --log_file %TRAIN_LOG_FILE% --seed %%r
+
     python src\run_%task%.py --bert_model %bert% --num_train_epochs %epochs% ^
-        --output_dir !OUTPUT_DIR! --data_dir %DATA_DIR% --log_file %TRAIN_LOG_FILE% --seed %%r
+         --output_dir !OUTPUT_DIR! --data_dir %DATA_DIR% --log_file %TRAIN_LOG_FILE% --seed %%r
 )
 
 REM script\run_ae.bat ae laptop_pt laptop pt_ae 9
